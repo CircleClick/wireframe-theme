@@ -1,0 +1,119 @@
+
+@font-face {
+	font-family: "Nex";
+	src: url("../fonts/Nex-light.otf");
+	font-weight: 300;
+}
+@font-face {
+	font-family: "Nex";
+	src: url("../fonts/Nex-light-italic.otf");
+	font-weight: 300;
+	font-style: italic;
+}
+@font-face {
+	font-family: "Nex";
+	src: url("../fonts/Nex.otf");
+	font-weight: normal;
+}
+@font-face {
+	font-family: "Nex";
+	src: url("../fonts/Nex-italic.otf");
+	font-weight: normal;
+	font-style: italic;
+}
+@font-face {
+	font-family: "Nex";
+	src: url("../fonts/Nex-bold.otf");
+	font-weight: bold;
+}
+
+
+$font-family: "Nex", sans-serif;
+
+$line-height: 1.5;
+
+$font-sizes: xs, sm, base, md, lg, xl, xxl;
+$font-min: 12px;
+$font-scale-sm: 1.18;
+$font-scale-lg: 1.3;
+
+// generate font size maps for mobile and desktop sizes
+$font-sizes-min: font-scale-map($font-min, $font-scale-sm, $font-sizes);
+$font-sizes-max: font-scale-map($font-min, $font-scale-lg, $font-sizes);
+
+@include fluid-font-scale($font-sizes, $font-sizes-min, $font-sizes-max, $sm, $lg);
+
+
+// .xs { font-size: 12px; }
+// .sm { font-size: 15px; }
+// .base { font-size: 18px; }
+// .md { font-size: 24px; }
+// .lg { font-size: 30px; }
+// .xl { font-size: 36px; }
+// .xxl { font-size: 46px; }
+.huge { 
+	@include fluid-font(35px, 93px, $xs, $xx);
+	line-height: 1;
+	font-weight: bold;
+}
+.huge-sub {
+	@include fluid-font(24px, 39px, $sm, $xx);
+}
+.xxl {
+	@include fluid-font(28px, 50px, $sm, $xx);
+	line-height: 1.2;
+	font-weight: 300;
+}
+.lg {
+	@include fluid-font(20px, 29px, $sm, $xx);
+	font-weight: bold;
+
+	em {font-weight: 300;}
+}
+.md {
+	@include fluid-font(18px, 26px, $sm, $xx);	
+}
+.base {
+	@include fluid-font(16px, 18px, $sm, $xx);
+}
+
+.centered {
+	text-align: center;
+}
+
+body {
+	font-family: $font-family;
+}
+
+h1, h2, h3, h4, h5, h6, li, p {
+	margin: 1rem 0;
+}
+
+h1 {
+	@extend .xxl;
+}
+
+h2 {
+	@extend .xl;
+}
+
+h3 {
+	@extend .lg;
+}
+
+h4 {
+	@extend .md;
+}
+
+h5 {
+	@extend .base;
+}
+
+body {
+	@extend .base;
+	line-height: 1.5;
+}
+
+.thin {
+	font-weight: 300 !important;
+}

@@ -1,0 +1,19 @@
+
+
+// .anim-in {
+
+// 	$anim-in-duration: .66s;
+
+// 	transition: opacity $anim-in-duration ease,
+// 				transform $anim-in-duration ease;
+
+// 	&[data-emergence=hidden] {
+// 		opacity: 0;
+// 		transform: translateY(50px);
+// 	}
+
+// 	&[data-emergence=visible] {
+// 		opacity: 1;
+// 		transform: translateY(0);
+// 	}
+// }

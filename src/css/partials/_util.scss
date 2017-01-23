@@ -1,0 +1,122 @@
+
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}
+
+// exponent function
+@function pow($number, $exponent) {
+	$value: 1;
+
+	@if $exponent > 0 {
+		@for $i from 1 through $exponent {
+			value: $value * $number;
+		}
+	}
+
+	@return $value;
+}
+
+.hidden {
+	display: none !important;
+}
+
+%image-replace {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	display: inline-block;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+%photo-bg {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+// fluid properties - properties which change fluidly between a min and max depending on resolution
+@mixin fluid-property($properties, $min-vw, $max-vw, $min-value, $max-value) {
+  @each $property in $properties {
+    #{$property}: $min-value;
+  }
+
+  @media screen and (min-width: $min-vw) {
+    @each $property in $properties {
+      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
+    }
+  }
+
+  @media screen and (min-width: $max-vw) {
+    @each $property in $properties {
+      #{$property}: $max-value;
+    }
+  }
+}
+
+@mixin fluid-font($min-value, $max-value, $min-vw, $max-vw) {
+	@include fluid-property(font-size, $min-vw, $max-vw, $min-value, $max-value);
+}
+
+/*
+font-scale
+
+Generates a complete font scale from the sizes provided.
+sizes should be list of any length of class names that will result, smallest to largest
+ex:
+@include font-scale(12px, 2, (sm, md, lg));
+yields:
+.sm {
+	font-size: 12px;
+}
+.md {
+	font-size: 24px;
+}
+.lg {
+	font-size: 48px;
+}
+*/
+@mixin font-scale($min, $scale, $sizes) {
+	$multiplier: 1;
+	@each $size in $sizes {
+		.#{$size} {
+			font-size: $min * $multiplier;
+		}
+		$multiplier: $multiplier * $scale;
+	}
+}
+
+/*
+font-scale-map
+
+Similar to font-scale, but generates a map of the following form:
+ex:
+$map: (
+	sm: 12px,
+	md: 24px,
+	lg: 48px
+)
+*/
+@function font-scale-map($min, $scale, $sizes) {
+
+	$map: ();
+	$multiplier: 1;
+	@each $size in $sizes {
+		$map: map-merge($map, ($size: $min * $multiplier));
+		$multiplier: $multiplier * $scale;
+	}
+	@return $map;
+}
+
+// generate fluid font classes based on font scales
+@mixin fluid-font-scale($sizes, $font-scale-min, $font-scale-max, $vw-min, $vw-max) {
+	@each $size in $sizes {
+		.#{$size} {
+			$min: map-get($font-scale-min, $size);
+			$max: map-get($font-scale-max, $size);
+			@include fluid-font($min, $max, $vw-min, $vw-max);
+		}
+	}
+}
+

@@ -1,0 +1,14 @@
+{
+  "name": "anycontext-wireframes-template",
+  "version": "1.0.0",
+  "description": "A starting point for the next great site",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tdog",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
+  }
+}

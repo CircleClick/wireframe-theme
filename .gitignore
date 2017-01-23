@@ -1,0 +1,27 @@
+
+# statics assets go into /src then get processed and copied into /assets, so we only want to keep the /src in the repo
+assets/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+
+# NPM-related
+
+## Logs
+logs
+*.log
+npm-debug.log*
+
+## Dependency directories
+node_modules
+jspm_packages
+
+## Optional npm cache directory
+.npm
