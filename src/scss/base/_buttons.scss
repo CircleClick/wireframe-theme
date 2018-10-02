@@ -1,0 +1,64 @@
+.btn {
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    border: 1px solid $color-primary-dark;
+    color: $color-primary-dark;
+    background: transparent;
+    transition: background .5s ease, color .5s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    position: relative;
+
+    &:after {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        margin-top: 10px;
+        border-bottom: 1px solid $color-primary-dark;
+    }
+
+    &:hover {
+        background: $color-primary-dark;
+        color: #fff;
+        text-decoration: none;
+        
+        &.bg--secondary {
+            background: $color-secondary-dark;
+        }
+    }
+}
+
+.btn.btn--primary {
+    color: white;
+    background: $color-primary-dark;
+
+    &:hover {
+        background: $color-primary;
+        color: #fff;
+        text-decoration: none;
+    }
+}
+
+.btn.large {
+    font-size: 125%;
+}
+.btn.extra__large {
+    font-size: 150%;
+    padding: 20px;
+}
+.btn.small {
+    font-size: 75%;
+    padding: 12px;
+}
+.invisibutton {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}

@@ -1,0 +1,147 @@
+
+.page-footer {
+	background-color: $color-dark-navy;
+	color: white;
+	//box-shadow: 0 65px 0 $color-dark-grey, 0 5px 60px rgba(0,0,0,.2);
+	padding: $gutter-xx 0;
+	position: relative;
+	text-align: center;
+
+	img {
+		max-width: 90%;
+		margin: auto;
+	}
+
+	& > .container {
+		margin: auto;
+	}
+
+	& > .container > .row {
+		align-items: center;
+		& > .col-md-4 {
+			@media (max-width: $md) {
+				margin-top: 50px;
+				text-align: center;
+			}
+		}
+	}
+}
+
+.page-footer__brand {
+	margin-bottom: 10px;
+	display: block;
+	& > img {
+		width: 90%;
+		max-width: 240px;
+	}
+}
+
+.page-footer > .container {
+	&::after {
+		display: none;
+	}
+
+	@include max-width($nav-breakpoint) {
+		flex-direction: column;
+	}
+}
+
+.page-footer__menu {
+	padding:0;
+	margin:0;
+	ul {
+		padding:0;
+		margin:0;
+	}	
+}
+
+.footer__menu, .footer__menu > ul {
+	padding: 0;
+}
+
+.footer__menu {
+	list-style: none;
+}
+
+.footer__menu li {
+	width: 100%;
+	display: block;
+	margin: 3px 0;
+	list-style: none;
+	a {
+		color: #ffffff78;
+		font-weight: lighter;
+		transition: color 0.3s ease-in-out;
+		text-decoration: none;
+
+		&:hover {
+			color: #ffffffff;
+		}
+	}
+}
+
+.page-footer .input--text {
+	max-width: 306px;
+
+	@include max-width($nav-breakpoint) {
+		max-width: 294px;
+	}
+}
+
+.footer__latest-posts > a {
+	color: white;
+	display: block;
+	margin-bottom: 10px;
+	font-weight: 600;
+	font-size: 90%;
+}
+.whitepaper__download-form {
+	background: $color-primary;
+	color: white;
+}
+.whitepaper__download-form--magical-flexbox {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+.no-whitepaper .whitepaper__download-form {
+	display: none;
+}
+#footer-editor-info {
+	background: #1b2633;
+	color: #ffffff4d;
+	padding: $gutter-sm;
+
+	& > p {
+		margin: 0;
+	}
+}
+
+.footer-social {
+	text-align:center;
+	a {
+		background: #fff;
+		color: $color-dark-navy;
+		border-radius: 100%;
+		width: 35px;
+		height: 35px;
+		line-height: 36px;
+		vertical-align: middle;
+		display: inline-block;
+		margin: 0 10px;
+	}
+	b {
+		font-size: 0.7em;
+	}
+}
+
+.footer__copyright {
+	color: #ffffff78;
+	font-size: 70%;
+}
+
+.footer__logo {
+	max-width: 320px;
+	height: auto;
+}

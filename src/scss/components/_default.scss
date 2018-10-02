@@ -1,0 +1,109 @@
+.page__default--hero {
+    background-size: cover;
+    background-position: center;
+    @media (min-width:$md) {
+        background-attachment: fixed;
+    }
+    background-color:#222;
+    position: relative;
+    min-height: 49vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    .container {
+        width: 100%;
+    }
+    h1 {
+        position: relative;
+        z-index: 1;
+    }
+    // &:after {
+    //     content: " ";
+    //     display: block;
+    //     position: absolute;
+    //     top:0;
+    //     left:-150%;
+    //     width: 200%;
+    //     height: 100%;
+    //     background: rgba(#000, 0.2);
+    //     transform: skew(-60deg);
+    // }
+    // &:before {
+    //     content: " ";
+    //     display: block;
+    //     position: absolute;
+    //     top:0;
+    //     left:50%;
+    //     width: 200%;
+    //     height: 100%;
+    //     background: rgba($color-primary, 0.5);
+    //     transform: skew(-60deg);
+    // }
+}
+
+.hero__title {
+    font-size: 300%;
+    text-shadow: 5px 5px 12px rgba(0,0,0,0.9);
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 100;
+}
+
+.hero__tint--dark {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3,3,3,0.5);
+}
+.hero__tint--curve {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(../img/heading-triangle.svg);
+    filter: brightness(75%);
+    background-size:cover;
+    background-position: bottom left;
+}
+.hero__tint--primary {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba($color-primary, 0.5);
+}
+
+.hero__tint {
+}
+.hero__tint2 {
+    @extend .hero__tint--primary
+}
+
+.hero__design {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.page__default--hero.bg--gradient:after {
+    display: none;
+    content: "";
+}
+
+.post__default--hero {
+    background-size: cover;
+    background-position: center;
+    background-color:#222;
+    position: relative;
+    padding: 23% 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.content__container {
+    padding: $gutter-xx 0;
+}

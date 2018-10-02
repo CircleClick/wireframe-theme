@@ -1,0 +1,67 @@
+@media (min-width: $md) {
+    .fade__animation--contents {
+        transition: transform 0.75s ease-out, opacity 0.75s ease-out;
+        transform: translate(0,0);
+        opacity: 1;
+    }
+    .fade__animation.primed {
+        .fade__animation--contents.fade-up {
+            transform: translateY(100%) !important;
+            opacity: 0 !important;
+        }
+        .fade__animation--contents.fade-down {
+            transform: translateY(-100%) !important;
+            opacity: 0 !important;
+        }
+        .fade__animation--contents.fade-left {
+            transform: translateX(100%) !important;
+            opacity: 0 !important;
+        }
+        .fade__animation--contents.fade-right {
+            transform: translateX(-100%) !important;
+            opacity: 0 !important;
+        }
+    }
+
+    .fade__animation--psuedo {
+        overflow: hidden;
+
+        &:before, &:after {
+            transition: transform 0.75s ease-out, opacity 0.75s ease-out;
+            transform: translate(0,0);
+            opacity: 1;
+        }
+    }
+    .fade__animation--psuedo.primed {
+        &:before, &:after {
+            transition: transform 0.75s ease-out, opacity 0.75s ease-out;
+            transform: translate(0,0);
+            opacity: 1;
+        }
+
+        &.fade-up {
+            &:before, &:after {
+                transform: translateY(100%) !important;
+                opacity: 0 !important;
+            }
+        }
+        &.fade-down {
+            &:before, &:after {
+                transform: translateY(-100%) !important;
+                opacity: 0 !important;
+            }
+        }
+        &.fade-left {
+            &:before, &:after {
+                transform: translateX(100%) !important;
+                opacity: 0 !important;
+            }
+        }
+        &.fade-right {
+            &:before, &:after {
+                transform: translateX(-100%) !important;
+                opacity: 0 !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,310 @@
+
+
+/*================ SETUP ================*/
+$grid-columns: 12 !default;
+
+// ---------------------
+// Breakpoints
+$xs: 320px !default;
+$sm: 480px !default;
+$md: 768px !default;
+$lg: 960px !default;
+$xl: 1100px !default;
+$xx: 1300px !default;
+$xxl: 1440px !default;
+$hd: 1920px !default;
+
+$breakpoints: (
+  xs: $xs,
+  sm: $sm,
+  md: $md,
+  lg: $lg,
+  xl: $xl,
+  xx: $xx,
+) !default;
+
+// ---------------------
+// Container sizes
+$container: $xx !default;
+$min-fluid-size: 320px !default;
+$max-fluid-size: $container !default;
+$nav-breakpoint: $lg !default;
+
+// ---------------------
+// Gutters
+$gutter-xs: 10px !default;
+$gutter-sm: 15px !default;
+$gutter-md: 20px !default;
+$gutter-lg: 30px !default;
+$gutter-xl: 45px !default;
+$gutter-xx: 60px !default;
+
+$gutter: $gutter-lg !default;
+
+$gutters: (
+	xs: $gutter-xs,
+	sm: $gutter-sm,
+	md: $gutter,
+	lg: $gutter,
+	xl: $gutter,
+	xx: $gutter-xl,
+) !default;
+
+// ---------------------
+// Media Queries
+// ex.
+// @include min-width($md) {...}
+// @include min-width(500px) {...}
+@mixin min-width($size) {
+  @media (min-width: $size) {
+    @content;
+  }
+}
+@mixin max-width($size) {
+  @media (max-width: $size - 1) {
+    @content;
+  } 
+}
+
+// ---------------------
+// Breakpoints
+
+// Get a breakpoint size
+@function size($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @return map-get($breakpoints, $breakpoint);
+  }
+  @warn "Unknown '#{$breakpoint}' in $breakpoints";
+  @return null;
+}
+
+
+// ------------------------------
+// Container classes
+
+.container {
+	@include clearfix;
+	position: relative;
+	max-width: $container;
+	margin-top: 0;
+	margin-bottom: 0;
+	// @include fluid-property([margin-left, margin-right], $gutter-md, $gutter-md);
+	margin-left: $gutter-md;
+	margin-right: $gutter-md;
+	@include min-width($container + ($gutter-xl)) {
+		margin: 0 auto;
+	}
+}
+.container.fluid {
+	max-width: unset;
+	margin-left: 0;
+	margin-right: 0;
+}
+.flex {
+	display: flex;	
+}
+
+// generate a container class for each breakpoint
+// ex. .container-xs, .container-sm, etc
+@each $breakpoint, $size in $breakpoints {
+	.container-#{$breakpoint} {
+		@extend .container;
+		max-width: $size;
+	}
+}
+
+// %container-padding {
+// 	@include fluid-property([padding-left, padding-right], $padding-x-sm, $padding-x-lg);
+// }
+// %minus-container-margin {
+// 	@include fluid-property([margin-left, margin-right], $padding-x-sm * -1, $padding-x-lg * -1);
+// }
+
+
+// ---------------------
+// Gutters
+
+// Get gutter sizes
+// ex.
+// margin-right: gutter(md);
+@function gutter($breakpoint) {
+  @if map-has-key($gutters, $breakpoint) {
+    @return map-get($gutters, $breakpoint);
+  }
+  @warn "Unknown '#{$breakpoint}' in $gutters";
+  @return null;
+}
+
+/*================ THE ACTUAL GRID ================*/
+
+.row {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	clear: both;
+	margin: 0 auto gutter(sm) auto;
+
+	&.align-top {
+		align-items: flex-start;
+	}
+	&.align-center, &.row--v-centered {
+		align-items: center;
+	}
+	&.row--no-margin {
+		margin-bottom: 0;
+	}
+	&.row--padded {
+		padding: $gutter-xx 0;
+	}
+}
+
+%columns-stacked {
+	flex: 0 0 auto;
+	width: 100%;
+	margin-bottom: gutter(sm);
+	margin-top: 0;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+%column-gutters {
+	@each $breakpoint, $size in $breakpoints {
+		@include min-width(size($breakpoint)) {
+			padding: 0 (gutter($breakpoint) / 2);
+			margin-top: 0;
+		}
+	} 
+}
+
+// set defaults on all column selectors
+// we could also do [class*="col-"] {...} but that would put undue processing burden on the client
+// @each $breakpoint, $size in $breakpoints {
+// 	@for $i from 1 through $grid-columns {
+// 		.col-#{$breakpoint}-#{$i} {
+// 			@extend %columns-stacked;
+// 			@extend %column-gutters;
+// 		}
+// 	}
+// }
+[class^="col-"], [class*=" col-"] {
+			@extend %columns-stacked;
+			@extend %column-gutters;	
+}
+
+
+// the actual grid
+@each $breakpoint, $size in $breakpoints {
+	@include min-width($size) {
+		@for $i from 1 through $grid-columns {
+			.col-#{$breakpoint}-#{$i} {
+				$col-width: percentage($i / $grid-columns);
+				width: #{$col-width};
+				margin-bottom: gutter($breakpoint);
+			}
+		}
+	}
+}
+
+// flexbox ordering classes
+@each $breakpoint, $size in $breakpoints {
+
+	@include min-width($size) {
+		.order-#{$breakpoint}-first {
+			order: -999;
+		}
+		.order-#{$breakpoint}-last {
+			order: 999;
+		}
+	}
+}
+
+// push classes
+@each $breakpoint, $size in $breakpoints {
+
+	@include min-width($size) {
+		@for $i from 1 through ($grid-columns - 1) {
+			.push-#{$breakpoint}-#{$i} {
+				$col-width: percentage($i / $grid-columns);
+				$push-amount: $col-width;
+				margin-left: $push-amount;
+				flex-shrink: 1;
+			}
+		}
+		.shove-#{$breakpoint} {
+			margin-left: 0;
+		}
+	}
+
+	@include max-width($size) {
+		.settle-#{$breakpoint} {
+			margin-left: 0;
+		}
+	}
+}
+// column centering
+.col--center {
+	margin: 0 auto;
+}
+
+
+// make it easy to show the grid (for debugging purposes)
+.show-grid {
+	.row {
+		background-color: rgba(0,0,0,0.05);
+
+		&:nth-child(2n) {
+			background-color: rgba(0,0,0,0.025);
+		}
+
+		& > * {
+			background-color: rgba(0,0,0,0.05);			
+
+			&:nth-child(2n) {
+				background-color: rgba(0,0,0,0.025);
+			}
+		}
+	}
+}
+
+
+// -------------------------------------------------------------------------
+// VISIBILITY CLASSES
+
+// hide breakpoint and up
+$i: 0;
+@each $breakpoint, $size in $breakpoints {
+  .hide-#{$breakpoint}-up {
+    @include min-width($size) {
+      display: none !important;
+    }
+  }
+  @if $i > 0 {
+    .show-#{$prevBreakpoint}-down {
+      @include min-width($size) {
+        display: none !important;
+      }
+    }
+  }
+  $prevBreakpoint: $breakpoint;
+  $i: $i + 1;
+}
+
+// hide breakpoint and down
+$i: 0;
+@each $breakpoint, $size in $breakpoints {
+  @if $i > 0 {
+    .hide-#{$prevBreakpoint}-down,
+    .show-#{$breakpoint}-up {
+      @include max-width($prevSize) {
+        display: none !important;
+      }
+    }
+  }
+  $prevBreakpoint: $breakpoint;
+  $prevSize: $size;
+  $i: $i + 1;
+}

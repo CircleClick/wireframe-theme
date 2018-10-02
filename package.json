@@ -1,14 +1,22 @@
 {
-  "name": "anycontext-wireframes-template",
+  "name": "cc-next",
   "version": "1.0.0",
-  "description": "A starting point for the next great site",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "tdog",
+  "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.18.13",
     "gulp": "^3.9.1",
-    "gulp-sass": "^2.3.2"
+    "gulp-clean-css": "^3.9.0",
+    "gulp-minify": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "webpack-stream": "^4.0.0"
+  },
+  "dependencies": {
+    "gulp-imagemin": "^3.4.0"
   }
 }

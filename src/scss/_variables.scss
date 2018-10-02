@@ -1,0 +1,49 @@
+
+/*================ COLORS ================*/
+
+$color-primary: #04478D;
+$color-primary-dark: #00314f;
+$color-secondary: #68BF4C;
+$color-secondary-dark: rgb(74, 134, 54);
+
+// Common colors
+$color-ultralight: #f9f9f9;
+$color-grey: #aaa;
+$color-medium-grey: #676767;
+$color-light-grey: #e4e4e3;
+$color-dark-grey: #222;
+$color-dark-navy: #00314f;
+$color-black: #010102;
+
+// Semantic applications of the color palette
+$color-text: #444;
+$color-hr: $color-light-grey;
+
+/*================ TYPOGRAPHY ================*/
+
+// Font stacks
+$font-body: 'proxima-nova', sans-serif;
+$font-headings: 'proxima-nova', sans-serif;
+
+$font-weight-light: 200;
+$font-weight-medium: 300;
+$font-weight-normal: $font-weight-medium;
+$font-weight-bold: 400;
+
+$font-size-base: 22px;
+$font-size-base-mobile: 21px;
+
+$line-height: 1.5;
+$line-height-slim: 1.25;
+
+/*================ Logos ================*/
+$logo-main: url("../img/logo-black.png");
+$logo-white: url("../img/logo-white.png");
+$logo-width-to-height: 3.43624161;
+$logo-height-sm: 56px;
+$logo-height-lg: 70px;
+
+$logo-tagline: $logo-white;
+$logo-tagline-ratio: 2.40375587;
+$logo-tagline-height-sm: 61px;
+$logo-tagline-height-lg: 61px;
