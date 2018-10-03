@@ -1,57 +1,12 @@
-const pressPopups = require('./utils/press-popups');
-
-function navbarAnchorListener (e) {
-    const link = this.getAttribute("href");
-    const split = link.split("#");
-    if (split.length > 1) {
-        const target = document.body.querySelector("a[name="+split[1]+"]");
-        if (target) {
-            e.preventDefault();
-            target.scrollIntoView({behavior: 'smooth'});
-            document.body.classList.remove("navbar__dropdown--active");
-        }
-    }
-}
+const Platform = require('./utils/platform');
+const Navbar = require('./utils/navbar');
 
 var carousels = [];
 var videos = [];
 var fadeAnimations = [];
 var fadeAnimationsPrimed = [];
-var navbarBGElement = document.getElementsByClassName("navbar__bg")[0];
 
-var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
-var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
-var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
-var is_safari = navigator.userAgent.indexOf("Safari") > -1;
-var is_opera = navigator.userAgent.toLowerCase().indexOf("op") > -1;
-var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
-if ((is_chrome)&&(is_safari)) { is_safari = false; }
-if ((is_chrome)&&(is_opera)) { is_chrome = false; }
-if (is_safari) {
-    navbarBGElement.style.transition = "none";
-}
 
-var scrollTargets = [];
-var activeTarget = -1;
-var navbarClasses = [
-    "navbar__logo--white",
-    "navbar--black",
-    "navbar--light",
-    "navbar--dark",
-    "navbar--translucent",
-    "navbar--transparent",
-];
-function removeNavbarModifiers () {
-    for (var i = 0; i < navbarClasses.length; i++) {
-        document.body.classList.remove(navbarClasses[i]);
-    }
-}
-function applyMultipleClasses (target, classes) {
-    if (typeof classes == "string") classes = classes.split(" ");
-    for (var i = 0; i < classes.length; i++) {
-        target.classList.add(classes[i]);
-    }
-}
 function getTopPadding (element) {
     var style = element.currentStyle || window.getComputedStyle(element),
     margin = parseFloat(style.marginTop),
@@ -70,34 +25,6 @@ function scrollDebouncer () {
 function scrollListener () {
     bounceCheck = false;
     autoplayListener();
-    if (window.scrollY == 0 && document.body.classList.contains("special__scroll__target")) {
-        removeNavbarModifiers();
-        applyMultipleClasses(document.body, document.body.dataset.navbar);
-        activeTarget = -1;
-    } else {
-        if (scrollTargets.length == 0) return;
-        var target = 0;
-        for (var i = scrollTargets.length-1; i >= 0; i--) {
-            var m = 0;
-            var rect = scrollTargets[i].getBoundingClientRect();
-
-            if (scrollTargets[i].dataset.navbar.match(/translucent/i) == null &&
-                scrollTargets[i].dataset.navbar.match(/transparent/i) == null) {
-                    m += navbarBGElement.offsetHeight;
-            }
-            m += getTopPadding(scrollTargets[i]);
-
-            if (rect.top-m <= 0) {
-                target = i;
-                i = -1;
-            }
-        }
-        if (target != activeTarget) {
-            activeTarget = target;
-            removeNavbarModifiers();
-            applyMultipleClasses(document.body, scrollTargets[target].dataset.navbar);
-        }
-    }
 
     const sizer = window.innerHeight/1.35;
     const sizer2 = window.innerHeight;
@@ -146,9 +73,7 @@ window.addEventListener("scroll", scrollDebouncer);
 
 function navbarListener (e) {
     e.preventDefault();
-
     document.body.classList.toggle("navbar__dropdown--active");
-
     return false;
 }
 
@@ -294,7 +219,6 @@ window.addEventListener("DOMContentLoaded", function () {
         })
     }
 
-    pressPopups();
 
     if (true || !iOS) {
         const videoEles = document.querySelectorAll("[data-autoplay-src]");
