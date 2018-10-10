@@ -1,7 +1,7 @@
 const Platform = require('./utils/platform');
 const Navbar = require('./utils/navbar');
+const Carousel = require('./utils/carousels.js');
 
-var carousels = [];
 var videos = [];
 var fadeAnimations = [];
 var fadeAnimationsPrimed = [];
@@ -119,85 +119,6 @@ function videoPopupListener (e) {
     document.body.style.overflowY = "hidden";
 }
 
-function initiateCarousel (cell) {
-    setInterval(function () {
-        if (cell.dataset.skip !== "true") {
-            const rect = cell.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom >= 0) {
-                const tabs = cell.children[cell.children.length-1];
-                for (var i = 0; i < cell.children.length-1; i++) {
-                    if (cell.children[i].classList.contains("active")) {
-                        cell.children[i].classList.remove("active");
-                        if (i == cell.children.length-2) {
-                            cell.children[0].classList.add("active");
-                            tabs.children[0].classList.add("active");
-                            tabs.children[cell.children.length-2].classList.remove("active");
-                        } else {
-                            cell.children[i+1].classList.add("active");
-                            tabs.children[i+1].classList.add("active");
-                            tabs.children[i].classList.remove("active");
-                        }
-                        i = cell.children.length;
-                    }
-                }
-            }
-        } else {
-            cell.dataset.skip = false;
-        }
-    }, 5000);
-}
-
-function carouselResizeListener () {
-    for (var i = 0; i < carousels.length; i++) {
-        const ele = carousels[i];
-        var max = 0;
-        for (var o = 0; o < ele.children.length; o++) {
-            if (ele.children[o].offsetHeight > max) max = ele.children[o].offsetHeight;
-        }
-        ele.style.height = max+"px";
-    }
-}
-
-function carouselTabControl (e) {
-    e.preventDefault();
-    this.dataset.clicked = true;
-    var number = 0;
-    for (var i = 0; i < this.parentElement.children.length; i++) {
-        this.parentElement.children[i].classList.remove("active");
-        if (this.parentElement.children[i].dataset.clicked === "true") number = i;
-    }
-    this.dataset.clicked = false;
-    this.classList.add("active");
-    this.parentElement.parentElement.dataset.skip = true;
-    for (var i = 0; i < this.parentElement.parentElement.children.length-1; i++) {
-        this.parentElement.parentElement.children[i].classList.remove("active");
-    }
-    this.parentElement.parentElement.children[number].classList.add("active");
-}
-
-function initiateCarousels () {
-
-    for (var i = 0; i < carousels.length; i++) {
-        const ele = carousels[i];
-        ele.classList.add("active");
-        const tabs = document.createElement("div");
-        tabs.classList.add("carousel--tabs");
-
-        for (let o = 0; o < ele.children.length; o++) {
-            const tab = document.createElement("div");
-            tab.classList.add("carousel--tab");
-            tab.addEventListener("click", carouselTabControl);
-            tabs.appendChild(tab);
-        }
-        tabs.children[0].classList.add("active");
-
-        ele.appendChild(tabs);
-        initiateCarousel(ele);
-    }
-    window.addEventListener("resize", carouselResizeListener);
-    carouselResizeListener();
-}
-
 function initiateFadeAnimations () {
     for (var i = 0; i < fadeAnimations.length; i++) {
         const ele = fadeAnimations[i];
@@ -257,9 +178,9 @@ window.addEventListener("DOMContentLoaded", function () {
         element.addEventListener("click", videoPopupListener);
     }
 
-    videos = document.getElementsByTagName("video");
-    carousels = document.getElementsByClassName("carousel--container");
-    initiateCarousels();
+	videos = document.getElementsByTagName("video");
+	
+    Carousel.initiate(document.getElementsByClassName("carousel__container"));
 
     fadeAnimations = document.body.querySelectorAll(".fade__animation, .fade__animation--psuedo");
     initiateFadeAnimations();
