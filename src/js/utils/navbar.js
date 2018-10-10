@@ -56,10 +56,10 @@ class Navbar {
             activeTarget = -1;
         } else {
             if (scrollTargets.length == 0) return;
-            var target = 0;
+            let target = 0;
             for (var i = scrollTargets.length-1; i >= 0; i--) {
-                var m = 0;
-                var rect = scrollTargets[i].getBoundingClientRect();
+                let m = 0;
+                const rect = scrollTargets[i].getBoundingClientRect();
 
                 if (scrollTargets[i].dataset.navbar.match(/translucent/i) == null &&
                     scrollTargets[i].dataset.navbar.match(/transparent/i) == null) {
