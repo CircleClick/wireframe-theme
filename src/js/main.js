@@ -180,7 +180,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
 	videos = document.getElementsByTagName("video");
 	
-    Carousel.initiate(document.getElementsByClassName("carousel__container"));
+	carousel = new Carousel();
+	carousel.initiate(document.getElementsByClassName("carousel__container"));
+
 
     fadeAnimations = document.body.querySelectorAll(".fade__animation, .fade__animation--psuedo");
     initiateFadeAnimations();

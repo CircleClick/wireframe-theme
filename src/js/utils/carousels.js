@@ -51,6 +51,7 @@ class Carousel {
 		for (var i = 0; i < carousels.length; i++) {
 
 			const ele = carousels[i];
+			this.carousels.push(ele);
 
 			ele.classList.add("carousel__container--active");
 			
