@@ -1,6 +1,7 @@
 const Platform = require('./utils/platform');
 const Navbar = require('./utils/navbar');
-const Carousel = require('./utils/carousels.js');
+const Popups = require('./utils/popups');
+const Carousel = require('./utils/carousels');
 
 var videos = [];
 var fadeAnimations = [];
@@ -91,34 +92,6 @@ function resumeAutoplayVideos () {
     }
 }
 
-function videoPopupRemoveListener (e) {
-    this.parentElement.removeChild(this);
-    resumeAutoplayVideos();
-    document.body.style.overflowY = "";
-}
-function videoPopupListener (e) {
-    e.preventDefault();
-    pauseAutoplayVideos();
-    var popup = document.createElement("div");
-    popup.classList.add("video__popup--container");
-    var iframe = document.createElement("iframe");
-    iframe.src = this.dataset.embed;
-    //<iframe width="560" height="315" src="https://www.youtube.com/embed/EkBwLtog0VA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    iframe.setAttribute("allow", "autoplay; encrypted-media");
-    iframe.setAttribute("allowfullscreen", true);
-    iframe.setAttribute("width", "560");
-    iframe.setAttribute("height", "315");
-    iframe.setAttribute("frameborder", "0");
-    iframe.classList.add("youtube-responsive-embed");
-    
-    popup.appendChild(iframe);
-    document.body.appendChild(popup);
-    window.requestAnimationFrame(function () {popup.classList.add("active")});
-
-    popup.addEventListener("click", videoPopupRemoveListener);
-    document.body.style.overflowY = "hidden";
-}
-
 function initiateFadeAnimations () {
     for (var i = 0; i < fadeAnimations.length; i++) {
         const ele = fadeAnimations[i];
@@ -172,11 +145,10 @@ window.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("navbar-toggle").addEventListener("click", navbarListener);
     document.getElementById("navbar-toggle-2").addEventListener("click", navbarListener);
-    const videoPopups = document.getElementsByClassName("video__popup");
-    for (var i = 0; i < videoPopups.length; i++) {
-        const element = videoPopups[i];
-        element.addEventListener("click", videoPopupListener);
-    }
+	
+	const popupLinks = document.getElementsByClassName("plugin-popup__link");
+	const popups = new Popups(popupLinks);
+	popups.initiate();
 
 	videos = document.getElementsByTagName("video");
 	
