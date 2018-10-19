@@ -23,9 +23,9 @@
 /*================ COMPONENTS ================*/
 @import 'components/default';
 @import 'components/popup';
-@import 'components/carousel';
-@import 'components/fade-animations';
-@import 'utilities/paralax';
+@import 'plugins/carousel';
+@import 'plugins/fade-animations';
+@import 'plugins/paralax';
 @import 'utilities/video';
 @import 'components/navbar';
 @import 'components/footer';
