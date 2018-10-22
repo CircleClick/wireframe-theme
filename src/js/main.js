@@ -1,6 +1,6 @@
 const Platform = require('./utils/platform');
-const Navbar = require('./utils/navbar');
-const Popups = require('./utils/popups');
+const Navbar = require('./plugins/navbar');
+const Popups = require('./plugins/popups');
 const Carousel = require('./utils/carousels');
 
 var videos = [];

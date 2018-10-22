@@ -1,4 +1,4 @@
-const setDefaults = require('./setDefaults');
+const setDefaults = require('../utils/setDefaults');
 
 const navbarClasses = [
     "navbar__logo--inverted",
