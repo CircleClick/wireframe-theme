@@ -1,19 +1,14 @@
-const Platform = require('./utils/platform');
 const Navbar = require('./plugins/navbar');
 const Popups = require('./plugins/popups');
-const Carousel = require('./utils/carousels');
+const Carousel = require('./plugins/carousels');
+
+const Platform = require('./utils/platform');
 
 var videos = [];
 var fadeAnimations = [];
 var fadeAnimationsPrimed = [];
 
 
-function getTopPadding (element) {
-    var style = element.currentStyle || window.getComputedStyle(element),
-    margin = parseFloat(style.marginTop),
-    padding = parseFloat(style.paddingTop);
-    return margin+padding;
-}
 
 var bounceCheck = false;
 function scrollDebouncer () {
