@@ -55,17 +55,17 @@ class Navbar {
             this.applyMultipleClasses(document.body, document.body.dataset.navbar);
             activeTarget = -1;
         } else {
-            if (scrollTargets.length == 0) return;
+            if (this.targets.length == 0) return;
             let target = 0;
-            for (var i = scrollTargets.length-1; i >= 0; i--) {
+            for (var i = this.targets.length-1; i >= 0; i--) {
                 let m = 0;
-                const rect = scrollTargets[i].getBoundingClientRect();
+                const rect = this.targets[i].getBoundingClientRect();
 
-                if (scrollTargets[i].dataset.navbar.match(/translucent/i) == null &&
-                    scrollTargets[i].dataset.navbar.match(/transparent/i) == null) {
+                if (this.targets[i].dataset.navbar.match(/translucent/i) == null &&
+                    this.targets[i].dataset.navbar.match(/transparent/i) == null) {
                         m += this.navbar.offsetHeight;
                 }
-                m += getTopPadding(scrollTargets[i]);
+                m += getTopPadding(this.targets[i]);
 
                 if (rect.top-m <= 0) {
                     target = i;
@@ -75,7 +75,7 @@ class Navbar {
             if (target != activeTarget) {
                 activeTarget = target;
                 this.removeNavbarModifiers();
-                this.applyMultipleClasses(document.body, scrollTargets[target].dataset.navbar);
+                this.applyMultipleClasses(document.body, this.targets[target].dataset.navbar);
             }
         }
     }

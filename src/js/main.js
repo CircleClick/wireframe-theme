@@ -7,13 +7,13 @@ const Platform = require('./utils/platform');
 
 const ScrollDebouncer = require('./utils/scrollDebouncer');
 
-var videos = [];
 var fadeAnimations = [];
 var fadeAnimationsPrimed = [];
+var autoplay = {};
 
 
 function scrollListener () {
-    autoplay.listener
+    autoplay.listener();
 
     const sizer = window.innerHeight/1.35;
     const sizer2 = window.innerHeight;
@@ -59,21 +59,13 @@ function initiateFadeAnimations () {
 
 window.addEventListener("DOMContentLoaded", function () {
 	
-
-    scrollTargets = document.getElementsByClassName("scroll__target");
-    scrollListener();
-
-
-    document.getElementById("navbar-toggle").addEventListener("click", navbarListener);
-    document.getElementById("navbar-toggle-2").addEventListener("click", navbarListener);
-	
 	const popupLinks = document.getElementsByClassName("plugin-popup__link");
 	const popups = new Popups(popupLinks);
 	popups.initiate();
 
-	const autoplay = new AutoplayVideos(document.getElementsByTagName("video"));
+	autoplay = new AutoplayVideos(document.getElementsByTagName("video"));
 	
-	carousel = new Carousel();
+	const carousel = new Carousel();
 	carousel.initiate(document.getElementsByClassName("carousel__container"));
 
 
@@ -82,6 +74,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
     const navAnchorLinks = document.getElementsByTagName("a");
     for (let i = 0; i < navAnchorLinks.length; i++) {
-        navAnchorLinks[i].addEventListener("click", navbarAnchorListener);
-    }
+        navAnchorLinks[i].addEventListener("click", Navbar.navbarAnchorListener);
+	}
+
+    scrollListener();
+	
 }); 

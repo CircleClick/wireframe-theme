@@ -14,5 +14,5 @@ module.exports = {
     firefox: is_firefox,
     safari: is_safari,
     opera: is_opera,
-    iso: iso,
+    iOS: iOS,
 }

@@ -4,7 +4,7 @@ const defaults = {
 };
 
 
-class Carousel {
+class Popups {
     constructor ( popups, options = {} ) {
         this.popups = popups;
         this.activeTarget = -1;
@@ -52,4 +52,4 @@ class Carousel {
 	}
 }
 
-module.exports = Carousel;
+module.exports = Popups;

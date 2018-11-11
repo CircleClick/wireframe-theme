@@ -4,7 +4,7 @@ const defaults = {
 };
 
 
-class Carousel {
+class AutoplayVideo {
     constructor ( videos, options = {} ) {
         this.videos = videos;
         this.activeTarget = -1;
@@ -16,16 +16,20 @@ class Carousel {
 	}
 
 	pauseVideos () {
-		for (var i = 0; i < this.videos.length; i++) {
-			const element = this.videos[i];
-			if (element.autoplay) element.pause();
+		if (this.videos) {
+			for (var i = 0; i < this.videos.length; i++) {
+				const element = this.videos[i];
+				if (element.autoplay) element.pause();
+			}
 		}
 	}
 	
 	resumeVideos () {
-		for (var i = 0; i < this.videos.length; i++) {
-			const element = this.videos[i];
-			if (element.autoplay && element.dataset.visible) element.play();
+		if (this.videos) {
+			for (var i = 0; i < this.videos.length; i++) {
+				const element = this.videos[i];
+				if (element.autoplay && element.dataset.visible) element.play();
+			}
 		}
 	}
 	
@@ -53,4 +57,4 @@ class Carousel {
 	}
 }
 
-module.exports = Carousel;
+module.exports = AutoplayVideo;

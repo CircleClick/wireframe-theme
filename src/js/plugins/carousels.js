@@ -83,13 +83,15 @@ class Carousel {
 	}
 
 	resize () {
-		for (var i = 0; i < this.carousels.length; i++) {
-			const ele = this.carousels[i];
-			var max = 0;
-			for (var o = 0; o < ele.children.length; o++) {
-				if (ele.children[o].offsetHeight > max) max = ele.children[o].offsetHeight;
+		if (this.carousels) {
+			for (var i = 0; i < this.carousels.length; i++) {
+				const ele = this.carousels[i];
+				var max = 0;
+				for (var o = 0; o < ele.children.length; o++) {
+					if (ele.children[o].offsetHeight > max) max = ele.children[o].offsetHeight;
+				}
+				ele.style.height = max+"px";
 			}
-			ele.style.height = max+"px";
 		}
 	}
 }
