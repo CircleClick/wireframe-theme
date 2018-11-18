@@ -19,6 +19,28 @@ $color-black: #010102;
 $color-text: #444;
 $color-hr: $color-light-grey;
 
+/*================== SPACING =================*/
+$size-xs: 2px;
+$size-sm: 4px;
+$size-md: 8px;
+$size-lg: 16px;
+$size-xl: 32px;
+$size-xx: 64px;
+$size-xxx: 128px;
+
+$section-padding: $size-lg;
+
+$p-margin: $size-lg;
+
+$heading-margin: $size-lg;
+
+$button-padding-vertical: $size-md;
+$button-padding-horizontal: $size-lg;
+
+$button-lg-padding-vertical: $size-lg;
+$button-lg-padding-horizontal: $size-xl;
+
+
 /*================ TYPOGRAPHY ================*/
 
 // Font stacks
@@ -26,12 +48,12 @@ $font-body: 'proxima-nova', sans-serif;
 $font-headings: 'proxima-nova', sans-serif;
 
 $font-weight-light: 200;
-$font-weight-medium: 300;
+$font-weight-medium: 400;
 $font-weight-normal: $font-weight-medium;
-$font-weight-bold: 400;
+$font-weight-bold: 600;
 
-$font-size-base: 22px;
-$font-size-base-mobile: 21px;
+$font-size-base: $size-lg;
+$font-size-base-mobile: $size-lg;
 
 $line-height: 1.5;
 $line-height-slim: 1.25;

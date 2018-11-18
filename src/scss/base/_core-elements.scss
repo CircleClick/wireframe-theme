@@ -2,12 +2,8 @@
 html {
 	font-family: $font-body;
 	font-weight: $font-weight-medium;
-	font-size: 1.2em;
+	font-size: $font-size-base;
 	color: $color-text;
-}
-
-.content__container {
-	font-size: 1.1em;
 }
 
 button, input, optgroup, select, textarea {
@@ -23,20 +19,8 @@ a {
 	text-decoration: none;
 
 	&:hover {
-		color: $color-primary;
+		color: $color-primary-dark;
 		text-decoration: underline;
-	}
-}
-
-.content__container {
-	p > a:not(.btn) {
-		border-bottom: 2px solid rgba($color-primary, 0.26);
-		transition: border-bottom-color 0.5s ease-in-out;
-
-		&:hover {
-			text-decoration: none;
-			border-bottom-color: rgba($color-primary, 1);
-		}
 	}
 }
 
@@ -52,78 +36,28 @@ hr {
 }
 
 h1,h2,h3,h4,h5,h6 {
-	font-weight: 300;
+	font-weight: $font-weight-medium;
 	letter-spacing: 1px;
 }
 
-h1.xxl {
-	font-size: 3em;
-}
-.subtitle--h1 {
-	font-size: 29px;
-	font-weight: $font-weight-light;
-}
-
 .section__title {
-    font-weight: $font-weight-light;
-	font-size: 54px;
-	margin: $gutter-md 0 60px 0;
-	text-align: center;
-	
-	&.lg {
-		font-size: 46px;
-	}
-	&:after {
-		content: "";
-		background: $color-primary;
-		height: 3px;
-		width: 20%;
-		display:block;
-		margin: 0 auto;
-		margin-top: 18px;
-		margin-bottom: 18px;
-	}
-	&.section__title--left {
-		text-align: left;
-	}
-	&.section__title--white:after {
-		background: #fff;
-	}
-}
-.subtitle--h2 {
-	font-size: 27px;
-	font-weight: $font-weight-light;
-	margin: $gutter-md auto;
-    max-width: 960px;
-}
-
-.column__title {
-	font-size: 35px;
-	font-weight: $font-weight-light;
+    font-weight: $font-weight-bold;
+	font-size: $size-xx;
+	margin: $size-lg 0 $size-xl 0;
 }
 
 p {
-	font-weight: 300;
-	line-height: $line-height;
-
-	&.lg {
-		font-size: 1.3em;
-	}
+	margin-bottom: $p-margin;
 }
 
 input, textarea, select {
 	font-weight: $font-weight-medium;
 }
 
-.small, .sm {
-	font-size: 85%;
+small {
+	font-size: $size-md;
 }
 
-.section {
-	overflow: auto;
-}
-
-// This comes from previous CMS content
-span.bold {
+b, strong {
 	font-weight: $font-weight-bold;
 }
