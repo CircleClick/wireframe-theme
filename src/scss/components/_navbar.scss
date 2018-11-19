@@ -24,6 +24,9 @@ $navbar-height-lg: 60px !default;
 }
 .admin-bar .navbar__container {
 	top: 32px;
+	@media(max-width: $nav-breakpoint) {
+		top: 46px;
+	}
 }
 
 
@@ -119,7 +122,6 @@ $navbar-height-lg: 60px !default;
 	}
 
 	.navbar__toggle {
-		padding-top: 10px;
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
@@ -128,14 +130,33 @@ $navbar-height-lg: 60px !default;
 		position: relative;
 		z-index: 1001;
 
+		height: $navbar-height-sm;
+		padding-right: $size-lg;
+
 		i {
 			font-size: 200%;
 			color: $color-black;
 			margin-left: 16px;
 		}
 	}
-	li.menu-item-47 > a {
-		display: none !important;
+
+	.navbar__items {
+		position: absolute;
+		top: $navbar-height-sm;
+		left: -100%;
+		transition: left 0.5s ease;
+
+		width: 100%;
+		background: white;
+		box-shadow: 0px 10px 5px -5px rgba(0,0,0,0.25), 0px 5px 2.5px -2.5px rgba(0,0,0,0.25) inset;
+
+		max-height: 80vh;
+		overflow-y: auto;
+
+		li {
+			padding: $size-lg;
+			margin: $size-md 0;
+		}
 	}
 
 }
@@ -393,8 +414,8 @@ $navbar-height-lg: 60px !default;
 .navbar__dropdown--active {
 	overflow: hidden;
 }
-.navbar__dropdown--active .navbar__dropdown {
-	right: 0%;
+.navbar__dropdown--active .navbar__items {
+	left: 0%;
 }
 
 /*================ NAVBAR MODIFIERS ================*/

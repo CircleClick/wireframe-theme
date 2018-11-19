@@ -77,6 +77,11 @@ window.addEventListener("DOMContentLoaded", function () {
         navAnchorLinks[i].addEventListener("click", Navbar.navbarAnchorListener);
 	}
 
-    scrollListener();
+	scrollListener();
 	
-}); 
+
+	const navToggle = document.getElementById('navbar-toggle');
+	navToggle.addEventListener('click', ()=>{
+		document.body.classList.toggle('navbar__dropdown--active');
+	});
+});
