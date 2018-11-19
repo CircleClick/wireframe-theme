@@ -40,12 +40,6 @@ h1,h2,h3,h4,h5,h6 {
 	letter-spacing: 1px;
 }
 
-.section__title {
-    font-weight: $font-weight-bold;
-	font-size: $size-xx;
-	margin: $size-lg 0 $size-xl 0;
-}
-
 p {
 	margin-bottom: $p-margin;
 }
@@ -60,4 +54,19 @@ small {
 
 b, strong {
 	font-weight: $font-weight-bold;
+}
+
+
+.section__title {
+    font-weight: $font-weight-bold;
+	font-size: $size-xx;
+	margin: $size-lg 0 $size-xl 0;
+}
+
+.container {
+	margin: auto;
+	width: 100%;
+	max-width: $page-width;
+
+	padding: $size-lg;
 }

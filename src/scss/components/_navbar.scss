@@ -3,35 +3,29 @@
 // THESE SHOULD GET OVERRIDDEN IN VARIABLES
 $logo-main: red !default; // The logo image url
 $logo-width-to-height: 3.43624161 !default;
-$logo-height-sm: 43px !default;
-$logo-height-lg: 43px !default;
+$logo-height-sm: 30px !default;
+$logo-height-lg: 30px !default;
 
 
 /*================ Navbar ================*/
 
-$nav-breakpoint: 1136px;
+$nav-breakpoint: $page-width;
 
-$navbar-padding-sm: 10px !default;
-$navbar-height-sm: $logo-height-sm + ($navbar-padding-sm * 2) !default;
+$navbar-height-sm: 50px !default;
 
-$navbar-padding-lg: 10px !default;
-$navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
+$navbar-height-lg: 60px !default;
 
 /*================ MOBILE & DESKTOP SHARED ================*/
-.navbar {
+.navbar__container{
 	position: absolute;
 	z-index: 100;
 	width: 100%;
 	top: 0; left: 0;
 }
-
-.navbar-telegram {
-	background: transparent;
-	color: white;
-	border: 3px solid white;
-	position: relative;
-    z-index: 2;
+.admin-bar .navbar__container {
+	top: 32px;
 }
+
 
 .navbar__bg {
 	position: absolute;
@@ -41,17 +35,24 @@ $navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
 	z-index: 1;
 }
 
-.navbar--margin, .navbar--fixed.navbar--margin {
+.navbar--margin {
 	margin-top: $navbar-height-lg;
-}
-.navbar--padding, .navbar--fixed.navbar--padding {
-	padding-top: $navbar-height-lg;
-}
-@media (max-width:$nav-breakpoint) {
-	.navbar--margin, .navbar--fixed.navbar--margin {
+	@media (max-width: $nav-breakpoint) {
 		margin-top: $navbar-height-sm;
 	}
-	.navbar--padding, .navbar--fixed.navbar--padding {
+}
+.navbar--padding {
+	padding-top: $navbar-height-lg;
+	@media (max-width: $nav-breakpoint) {
+		padding-top: $navbar-height-sm;
+	}
+}
+
+@media (max-width:$nav-breakpoint) {
+	.navbar--margin {
+		margin-top: $navbar-height-sm;
+	}
+	.navbar--padding {
 		padding-top: $navbar-height-sm;
 	}
 }
@@ -63,54 +64,29 @@ $navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
 	background-color: #000;
 }
 
-.navbar__logo {
-	// prevent inline-block elements from giving this element extra space at the bottom
-	font-size: 0;
-    letter-spacing: 0;
-    word-spacing: 0;
-    position: relative;
-    z-index: 10;
-}
-
-.navbar__logo > a {
-	@extend %image-replace;
-	background-image: $logo-main;
-	height: $logo-height-lg;
-	width: $logo-height-lg * $logo-width-to-height;
-}
-
-.navbar__logo--white .navbar__logo > a {
-	background-image: $logo-white;
-}
-
 .navbar__menu {
-	@extend %reset-list;
-}
-
-.navbar__menu-item {
-	& > a {
-		color: $color-black;
-		&:hover {
-			color: $color-primary;
-			text-decoration: none;
+	position: relative;
+	z-index: 2;
+	ul {
+		@extend %reset-list;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+	}
+	li {
+		display: block;
+		a {
+			color: $color-black;
+			&:hover {
+				color: $color-primary;
+				text-decoration: none;
+			}
 		}
 	}
 }
 
-.navbar--dark .navbar__menu-item {
 
-	& > a {
-		color: $color-primary;
-		
-		&:hover {
-			color: $color-light-grey;
-		}
-	}
-}
-
-.navbar > .container > .row, .navbar > .container > .row > .col {
-	margin: 0;
-}
 
 /* prevent nested submenus */
 .navbar__sub-menu > li > .navbar__sub-menu {
@@ -129,18 +105,18 @@ $navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
 		//padding-top: $navbar-height-sm;
 	}
 
-	.navbar > .container {
-		padding: $navbar-padding-sm 0;
+	.navbar__container > .container {
+		padding: 0;
 	}
 
-	.navbar > .container > .row > .desktop {
+	.navbar__container> .container > .row > .desktop {
 		display: none;
 	}
 
 	.navbar__logo > a {
 		height: $logo-height-sm;
 		width: $logo-height-sm * $logo-width-to-height;
-	}	
+	}
 
 	.navbar__toggle {
 		padding-top: 10px;
@@ -186,24 +162,14 @@ $navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
 /*================ DESKTOP NAV ================*/
 @include min-width($nav-breakpoint) {
 	
-	.navbar > .container > .row > .desktop {
+	.navbar__container> .container > .row > .desktop {
 		display: flex;
-		justify-content: flex-end;
+		justify-content: center;
 		align-items: center;
 	}
 
-	body {
-		//padding-top: $navbar-height-lg;
-	}
-	.navbar--fixed {
-		padding-top: 0;
-	}
-
-	.navbar {
+	.navbar__container{
 	    box-shadow: 0px 0px 3px rgba(0,0,0,.5);
-	}
-	.navbar > .container {
-		padding: $navbar-padding-lg 0;
 	}
 	.navbar__nav {
 		position: relative;
@@ -215,14 +181,16 @@ $navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
 	.navbar__menu {
 		height: 100%;
 		display: flex;
-		justify-content: flex-end;
+		justify-content: center;
 		align-items: center;
+		padding: 0;
+		margin: 0;
 	}
 
 	.navbar__menu > .navbar__menu-item {
 		height: 100%;
-		font-size: 19px;
-		margin: -$navbar-padding-lg 10px;
+		margin: 0 10px;
+		line-height: $navbar-height-lg;
 
 		&:hover > a {
 			background: rgba(white, 0.5)
@@ -230,9 +198,8 @@ $navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
 
 		& > a {
 			display: inline-block;
-			padding: 0 ($navbar-padding-lg / 2);
+			padding: 0 $size-lg;
 			height: 100%;
-			line-height: $navbar-height-lg;
 			transition: background-color .3s ease;
 			position: relative;
 			font-weight: lighter;
@@ -287,7 +254,7 @@ $navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
 		}
 	}
 
-	.navbar > .container > .row > .col.navbar__button--container {
+	.navbar__container> .container > .row > .col.navbar__button--container {
 		margin: 0 0 0 0;
 		position: relative;
 		z-index: 10;
@@ -432,19 +399,18 @@ $navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
 
 /*================ NAVBAR MODIFIERS ================*/
 //Fixed navbar
-.navbar--fixed header.navbar {
+.navbar--fixed header.navbar__container{
     position: fixed;
-	box-shadow: none;
 	.navbar__bg {
 		transition: background-color 1s ease;
 	}
 }
 
 //Black navbar
-.navbar--black .navbar .navbar__menu-item > a {
+.navbar--black .navbar__container.navbar__menu-item > a {
     color:white;
 }
-.navbar--black .navbar .navbar__bg {
+.navbar--black .navbar__container.navbar__bg {
     background: rgba(0,0,0,0.5);
 }
 .navbar--black .navbar__logo {
@@ -456,13 +422,13 @@ $navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
 }
 
 //Light navbar
-.navbar--light .navbar .navbar__menu-item > a {
+.navbar--light .navbar__container.navbar__menu-item > a {
     color: $color-black;
 }
-.navbar--light .navbar .navbar__toggle  i {
+.navbar--light .navbar__container.navbar__toggle  i {
 	color: $color-black;
 }
-.navbar--light .navbar .navbar__bg {
+.navbar--light .navbar__container.navbar__bg {
     background: rgba(255,255,255,1);
 }
 .navbar--light .navbar-telegram {
@@ -478,13 +444,13 @@ $navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
 }
 
 //Dark navbar
-.navbar--dark .navbar .navbar__menu-item > a {
+.navbar--dark .navbar__container.navbar__menu-item > a {
     color: white;
 }
-.navbar--dark .navbar .navbar__bg {
+.navbar--dark .navbar__container.navbar__bg {
     background: rgba(0,0,0,1);
 }
-.navbar--dark .navbar .navbar__toggle i {
+.navbar--dark .navbar__container.navbar__toggle i {
 	color: white;
 }
 .navbar--dark .navbar__logo {
@@ -496,14 +462,14 @@ $navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
 }
 
 //Translucent navbar
-.navbar--translucent .navbar .navbar__menu-item > a {
+.navbar--translucent .navbar__container.navbar__menu-item > a {
 	color: $color-black;
 	&:hover {
 		background: transparent;
 		color: black;
 	}
 }
-.navbar--translucent .navbar .navbar__toggle  i {
+.navbar--translucent .navbar__container.navbar__toggle  i {
 	color: $color-black;
 }
 .navbar--translucent .navbar__bg {
@@ -523,7 +489,7 @@ $navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
 }
 
 //Transparent navbar
-.navbar--transparent .navbar .navbar__menu-item > a {
+.navbar--transparent .navbar__container.navbar__menu-item > a {
 	color: white;
 	text-shadow: 2px 2px 4px #000;
 	&:hover {
@@ -533,10 +499,10 @@ $navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
 .navbar--transparent .navbar__bg {
     background: rgba(255,255,255,0);
 }
-.navbar--transparent .navbar .navbar__toggle i {
+.navbar--transparent .navbar__container.navbar__toggle i {
 	color: white;
 }
-.navbar--transparent .navbar {
+.navbar--transparent .navbar__container{
 	box-shadow: 0px 0px 0px rgba(0,0,0,0);
 }
 .navbar--transparent .navbar__logo {
@@ -553,4 +519,19 @@ $navbar-height-lg: $logo-height-lg + ($navbar-padding-lg * 2) !default;
 		color: #fff;
 	}
 	background: $color-primary;
+}
+
+
+.no-navbar {
+	.navbar--margin,
+	&.navbar--margin {
+		margin-top: 0 !important;
+	}
+	.navbar--padding,
+	&.navbar--padding {
+		padding-top: 0 !important;
+	}
+	.navbar__container {
+		display: none !important;
+	}
 }

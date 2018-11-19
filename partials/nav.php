@@ -1,16 +1,17 @@
+<div class="navbar__screen-overlay" id="navbar-screen-overlay"></div>
 
-<header class="page-header">
-	<a href="/" class="brand">AnyContext</a>
-    <div class="nav-toggle" id="nav-toggle">
-      <span></span>
-      <span></span><span></span>
-      <span></span>
-    </div>
-	<nav class="navbar" id="navbar-nav">
-		<ul>
-			<li><a href="/about">about</a></li>
-			<li><a href="/services">services</a></li>
-			<li><a href="/contact">contact</a></li>
-		</ul>
+<header class="navbar__container">
+	<nav class="navbar__items" id="navbar-nav">
+		<?php wp_nav_menu([
+			'theme_location' => 'main-menu',
+			'container' => false,
+			'menu_class' => 'navbar__menu',
+		]);?>
 	</nav>
+
+	<div class="navbar__toggle" id="navbar-toggle">
+		<i class="fas fa-bars"></i>
+	</div>
+
+	<div class="navbar__bg"></div>
 </header>
