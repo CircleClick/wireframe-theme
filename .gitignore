@@ -25,3 +25,7 @@ jspm_packages
 
 ## Optional npm cache directory
 .npm
+vscode
+.vscode/
+.vscode/*
+.vscode/sftp.json
