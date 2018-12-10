@@ -53,3 +53,16 @@ function cc_update_main_nav_submenu_classes($classes, $args, $depth) {
 	return $classes;
 }
 add_filter('nav_menu_submenu_css_class', 'cc_update_main_nav_submenu_classes', 10, 3);
+
+
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Social Settings',
+		'menu_title'	=> 'Social Settings',
+		'menu_slug' 	=> 'social-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+	
+}

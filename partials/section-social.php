@@ -4,8 +4,8 @@
 		<div class="row">
 			<div class="columns medium-4 small-6">
 				<ul class="icons">
-					<li><a href="https://www.facebook.com/anycontext/"><i class="fa fa-facebook"></i> Stalk AnyContext</a></li>
-					<li><a href="https://twitter.com/teamanycontext"><i class="fa fa-twitter"></i> Holler @teamanycontext</a></li>
+					<?php if (get_field('facebook_url', 'option') != null && get_field('facebook_url', 'option') !== '' && get_field('facebook_url', 'option') !== ' '): ?><li><a href="<?php the_field('facebook_url', 'option'); ?>"><i class="fa fa-facebook"></i></a></li><?php endif; ?>
+					<?php if (get_field('twitter_url', 'option') != null && get_field('twitter_url', 'option') !== '' && get_field('twitter_url', 'option') !== ' '): ?><li><a href="<?php the_field('twitter_url', 'option'); ?>">"><i class="fa fa-twitter"></i></a></li><?php endif; ?>
 				</ul>
 			</div>
 			<div class="columns medium-4 hide-sm-down" style="text-align: center; padding-left: 28px;">
@@ -13,8 +13,8 @@
 			</div>
 			<div class="columns medium-4 small-6">
 				<ul class="icons">
-					<li><a href="https://www.instagram.com/teamanycontext/"><i class="fa fa-instagram"></i> @teamanycontext eye candy</a></li>
-					<li><a href="https://www.linkedin.com/company/anycontext"><i class="fa fa-linkedin"></i>Network with the team</a></li>
+					<?php if (get_field('instagram_url', 'option') != null && get_field('instagram_url', 'option') !== '' && get_field('instagram_url', 'option') !== ' '): ?><li><a href="<?php the_field('instagram_url', 'option'); ?>">"><i class="fa fa-instagram"></i></a></li><?php endif; ?>
+					<?php if (get_field('linkedin_url', 'option') != null && get_field('linkedin_url', 'option') !== '' && get_field('linkedin_url', 'option') !== ' '): ?><li><a href="<?php the_field('linkedin_url', 'option'); ?>">"><i class="fa fa-linkedin"></i></a></li><?php endif; ?>
 				</ul>
 			</div>
 		</div>
