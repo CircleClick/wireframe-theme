@@ -41,7 +41,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	margin-bottom: $p-margin;
+	margin: 0 0 $p-margin 0;
 }
 
 input, textarea, select {
@@ -60,7 +60,7 @@ b, strong {
 .section__title {
     font-weight: $font-weight-bold;
 	font-size: $size-xx;
-	margin: $size-lg 0 $size-xl 0;
+	margin: 0 0 $size-xl 0;
 }
 
 .container {
