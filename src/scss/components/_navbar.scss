@@ -77,7 +77,7 @@ $navbar-height-lg: 60px !default;
 		justify-content: center;
 		align-items: center;
 	}
-	li {
+	.menu-item {
 		display: block;
 		a {
 			color: $color-black;
@@ -86,6 +86,37 @@ $navbar-height-lg: 60px !default;
 				text-decoration: none;
 			}
 		}
+	}
+}
+
+.navbar__menu {
+	.menu-item-has-children {
+		overflow: visible;
+		.navbar__sub-menu {
+			display: block;
+			pointer-events: none;
+			opacity: 0;
+			background: white;
+			position: absolute;
+			top: 100%;
+			left: 100%;
+			width: 250px;
+			padding-left: $size-md;
+			padding-right: $size-md;
+
+			box-shadow: 0px $size-md $size-md (-$size-md/2) rgba(30, 30, 53, 0.5);
+
+			transition: left 0.5s ease, opacity 0.5s ease;
+		}
+
+		&:hover {
+			.navbar__sub-menu {
+				pointer-events: unset;
+				opacity: 1;
+				left: 0%;
+			}
+		}
+
 	}
 }
 
