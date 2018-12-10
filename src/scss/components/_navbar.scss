@@ -239,16 +239,17 @@ $navbar-height-lg: 60px !default;
 		margin: 0;
 	}
 
-	.navbar__menu > .navbar__menu-item {
+	.navbar__menu .navbar__menu-item {
 		height: 100%;
 		margin: 0 10px;
 		line-height: $navbar-height-lg;
 
 		&:hover > a {
-			background: rgba(white, 0.5)
+			background: rgba(white, 0.5);
 		}
 
 		& > a {
+			line-height: $navbar-height-lg;
 			display: inline-block;
 			padding: 0 $size-lg;
 			height: 100%;
