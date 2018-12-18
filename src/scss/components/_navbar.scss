@@ -22,10 +22,12 @@ $navbar-height-lg: 60px !default;
 	width: 100%;
 	top: 0; left: 0;
 }
-.admin-bar .navbar__container {
-	top: 32px;
-	@media(max-width: 765px) {
-		top: 46px;
+@include min-width(582px) {
+	.admin-bar .navbar__container {
+		top: 32px;
+		@include max-width(765px) {
+			top: 46px;
+		}
 	}
 }
 
