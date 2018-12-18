@@ -21,12 +21,12 @@ $color-hr: $color-light-grey;
 
 /*================== SPACING =================*/
 $size-xs: 2px;
-$size-sm: 4px;
-$size-md: 8px;
-$size-lg: 16px;
-$size-xl: 32px;
-$size-xx: 64px;
-$size-xxx: 128px;
+$size-sm: $size-xs*2 ;//4px;
+$size-md: $size-sm*2 ;//8px;
+$size-lg: $size-md*2 ;//16px;
+$size-xl: $size-lg*2 ;//32px;
+$size-xx: $size-xl*2 ;//64px;
+$size-xxx: $size-xx*2 ;//128px;
 
 $page-width: 1024px;
 
