@@ -2,10 +2,10 @@
     position: relative;
 }
 .blog__item-row {
-    margin-bottom: 100px;
+    margin-bottom: $size-xxx;
 }
 .blog__item-readmore {
-    font-size: 16px;
+    font-size: $size-lg;
 }
 .blog__item--link {
     position: absolute;
@@ -14,53 +14,7 @@
     width: 100%;
     height: 100%;
 }
-.post__single--sidebar {
-    & > a {
-        display: block;
 
-        & > img {
-            display: block;
-            width: 90%;
-        }
-    }
-}
-.thumbnail-wrapper {
-    padding: 5px;
-    border: 1px solid $color-light-grey;
-    border-radius: 4px;
-    position: relative;
-    overflow: hidden;
-    img {
-        display: block;
-    }
-    font-family: "Font Awesome\ 5 Free";
-    font-weight: 900;
-    color: white;
-    text-align: center;
-
-    &:after {
-        content: "\f00e";
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 300%;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba($color-secondary, 0.5);
-        opacity: 0;
-        transition: opacity 0.5s ease;
-    }
-    &:hover:after {
-        opacity: 1;
-    }
-}
-a:hover .thumbnail-wrapper:after,
-.blog__item:hover .thumbnail-wrapper:after {
-    opacity: 1;
-}
 .blog__pagination {
     .current {
         color:black;
@@ -88,23 +42,4 @@ a:hover .thumbnail-wrapper:after,
 		@extend .btn;
 		@extend .bg--secondary;
     }
-}
-
-.blog__date-month {
-    background: $color-primary;
-    color: white;
-}
-.blog__date-day {
-    background: $color-light-grey;
-    color: $color-primary;
-    font-weight: bold;
-    height: 35px;
-    line-height: 35px;
-    vertical-align: middle;
-}
-.blog__date-month, .blog__date-day, .blog__date-year {
-    display: block;
-    margin-left: auto;
-    text-align: center;
-    width: 50px;
 }

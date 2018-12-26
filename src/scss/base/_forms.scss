@@ -1,47 +1,6 @@
 .input--text {
     border: 2px solid $color-light-grey;
-    padding: 10px 15px;
-}
-
-.number__control--wrapper {
-    display: inline-block;
-    margin-left: 50px;
-
-    input[type=number] {
-        -moz-appearance:textfield;
-        width: 35px;
-        text-align: center;
-        padding: 5px;
-        border: none;
-
-        &:hover {
-            padding: 4px;
-            border: 1px solid #7A7A7A;
-        }
-
-        &::-webkit-inner-spin-button,
-        &::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            appearance: none;
-            display: none;
-            margin: 0; 
-        }
-    }
-
-    .number__control {
-        border-radius: 100%;
-        background: transparent;
-        border-color: #7A7A7A;
-        border-style: solid;
-        color: #7A7A7A;
-        text-align: center;
-        width: 30px;
-        height: 30px;
-        font-size: 30px;
-        padding: 0;
-        vertical-align: middle;
-        line-height: 27px;
-    }
+    padding: $size-md $size-lg;
 }
 
 .form--horizontal .field-group {
@@ -55,5 +14,5 @@
 .wpcf7-text, .wpcf7-textarea {
     width: 100%;
     border: 1px solid $color-light-grey;
-    padding: 5px 8px;
+    padding: $size-sm $size-md;
 }
