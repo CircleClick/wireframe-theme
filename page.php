@@ -1,14 +1,5 @@
 <?php 
-
-add_filter( 'body_class','page_body_classes' );
-function page_body_classes( $classes ) {
- 
-    $classes[] = 'navbar--padding';
-     
-    return $classes;
-}
-
-get_header();?>
+	get_header();?>
 
 	
 <?php if( have_posts() ):?>
