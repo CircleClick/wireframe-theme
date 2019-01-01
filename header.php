@@ -16,6 +16,6 @@
 	<?php wp_head();?>
 
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class('show-grid'); ?>>
 
 <?php get_template_part('partials/nav');?>

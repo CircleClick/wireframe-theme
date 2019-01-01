@@ -1,17 +1,29 @@
 <div class="navbar__screen-overlay" id="navbar-screen-overlay"></div>
 
-<header class="navbar__container">
-	<nav class="navbar__items" id="navbar-nav">
-		<?php wp_nav_menu([
-			'theme_location' => 'main-menu',
-			'container' => false,
-			'menu_class' => 'navbar__menu',
-		]);?>
-	</nav>
+<div class="container">
+	<div class="row">
+	
+		<div class="col-md-3">
+			<?php wp_nav_menu([
+				'theme_location' => 'main-menu',
+				'container' => false,
+				'menu_class' => 'navbar__menu',
+			]);?>
+		</div>
+	
+		<div class="col-md-6">
+			<?php wp_nav_menu([
+				'theme_location' => 'main-menu',
+				'container' => false,
+				'menu_class' => 'navbar__menu',
+			]);?>
+		</div>
 
-	<div class="navbar__toggle" id="navbar-toggle">
-		<i class="fas fa-bars"></i>
+		<div class="col-md-3">
+			<div class="navbar__toggle" id="navbar-toggle">
+				<i class="fas fa-bars"></i>
+			</div>
+		</div>
+
 	</div>
-
-	<div class="navbar__bg"></div>
-</header>
+</div>
