@@ -1,23 +1,24 @@
 <?php
-	get_header();?>
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
+get_header();
 
-<?php if( have_posts() ):?>
-	<?php while ( have_posts() ):?>
-		<?php the_post();?>
-		
-		<div class="container">
-			<h1><?php the_title();?></h1>
+$is_elementor_theme_exist = function_exists( 'elementor_theme_do_location' );
 
-			<?php if (has_post_thumbnail()): ?>
-				<img src="<?php echo get_the_post_thumbnail_url(null, 'full'); ?>" >
-			<?php endif; ?>
+if ( is_singular() ) {
+	if ( ! $is_elementor_theme_exist || ! elementor_theme_do_location( 'single' ) ) {
+		get_template_part( 'template-parts/single' );
+	}
+} elseif ( is_archive() || is_home() || is_search() ) {
+	if ( ! $is_elementor_theme_exist || ! elementor_theme_do_location( 'archive' ) ) {
+		get_template_part( 'template-parts/archive' );
+	}
+} else {
+	if ( ! $is_elementor_theme_exist || ! elementor_theme_do_location( 'single' ) ) {
+		get_template_part( 'template-parts/404' );
+	}
+}
 
-			<?php the_content();?>
-		</div>
-	<?php endwhile;?>
-<?php else: ?>
-	<h1>There's nothing here.</h1>
-<?php endif;?>
-
-<?php get_footer();?>
+get_footer();
