@@ -30,7 +30,7 @@ function theme_scripts() {
 	wp_enqueue_style('main_css', get_template_directory_uri().'/assets/css/main.min.css?v='.$cssVersion);
 
 	$jsVersion = @filemtime(get_template_directory() .'/assets/js/main.min.js');
-	wp_enqueue_style('main_js', get_template_directory_uri().'/assets/js/main.min.js?v='.$jsVersion);
+	wp_enqueue_script('main_js', get_template_directory_uri().'/assets/js/main.min.js?v='.$jsVersion);
 	
 	wp_enqueue_style('fontawesome', 'https://use.fontawesome.com/releases/v5.5.0/css/all.css');
 }
