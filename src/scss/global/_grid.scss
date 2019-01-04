@@ -90,8 +90,9 @@ $gutters: (
 	margin-top: 0;
 	margin-bottom: 0;
 	// @include fluid-property([margin-left, margin-right], $gutter-md, $gutter-md);
-	margin-left: $gutter-md;
-	margin-right: $gutter-md;
+	box-sizing: border-box;
+	padding-left: $gutter-md;
+	padding-right: $gutter-md;
 	@include min-width($container + ($gutter-xl)) {
 		margin: 0 auto;
 	}
@@ -204,6 +205,7 @@ $gutters: (
 	@include min-width($size) {
 		@for $i from 1 through $grid-columns {
 			.col-#{$breakpoint}-#{$i} {
+				box-sizing: border-box;
 				$col-width: percentage($i / $grid-columns);
 				width: #{$col-width};
 				margin-bottom: gutter($breakpoint);
