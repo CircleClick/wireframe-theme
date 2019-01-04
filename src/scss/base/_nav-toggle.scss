@@ -1,0 +1,21 @@
+#nav_toggle {
+    cursor: pointer;
+}
+
+.navigation__container {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    overflow-y: auto;
+    background: rgba($color-primary, 0.69);
+    color: white;
+    transition: left 0.75s ease;
+}
+.navbar--toggled {
+    .navigation__container {
+        left: 0%;
+    }
+}
