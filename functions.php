@@ -53,3 +53,14 @@ remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
+
+/*================ MENUS ================*/
+function cc_register_nav_menus() {
+	register_nav_menus([
+		'main-menu' => 'Main Menu',
+		'footer-menu' => 'Footer Menu',
+		'legal-menu' => 'Legal Menu',
+	]);
+}
+add_action('after_setup_theme', 'cc_register_nav_menus');

@@ -3,6 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
+
 <div class="container fluid bg--white navbar--container" role="banner">
 	<div class="container">
 		<div class="row flex--center">
@@ -18,5 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 </div>
 
 <div class="navigation__container">
-
+	<?php wp_nav_menu([
+		'theme_location' => 'main-menu',
+		'container' => false,
+		'menu_class' => 'navbar__menu',
+	]);?>
 </div>
