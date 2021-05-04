@@ -1,6 +1,6 @@
 
-# statics assets go into /src then get processed and copied into /assets, so we only want to keep the /src in the repo
-assets/
+# statics assets go into /src then get processed and copied into /dist, so we only want to keep the /src in the repo
+dist/
 
 # OS generated files
 .DS_Store
@@ -30,5 +30,4 @@ vscode
 .vscode/*
 .vscode/sftp.json
 
-dist/
 package-lock.json
