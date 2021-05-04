@@ -3,9 +3,10 @@
 
 ### Setup
 
-1. Use `npm install` from the command line to install dependencies.
-
-2. `gulp` to watch for /src changes and automatically build/copy to /assets.
+- Use `yarn install` from the command line to install dependencies.
+- Build or watch the CSS/JS separately
+    - `yarn js` or `yarn watch-js`
+    - `yarn css` or `yarn watch-css`
 
 
 
