@@ -1,0 +1,27 @@
+{
+    "protocol": "sftp",
+    "port": 2222,
+    "remotePath": "/wp-content/themes/wireframe-theme/",
+    "watcher": {
+        "files": "{dist/*.css,dist/*.js}",
+        "autoUpload": true,
+        "autoDelete": false
+    },
+    "profiles": {
+        "live": {
+            "host": "",
+            "username": "",
+            "password": ""
+        },
+        "staging": {
+            "host": "",
+            "username": "",
+            "password": ""
+        },
+        "dev": {
+            "host": "",
+            "username": "",
+            "password": ""
+        }
+    }
+}
