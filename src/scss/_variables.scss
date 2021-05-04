@@ -1,9 +1,8 @@
-
 /*================ COLORS ================*/
 
-$color-primary: #04478D;
+$color-primary: #04478d;
 $color-primary-dark: #00314f;
-$color-secondary: #68BF4C;
+$color-secondary: #68bf4c;
 $color-secondary-dark: rgb(74, 134, 54);
 
 // Common colors
@@ -21,15 +20,14 @@ $color-hr: $color-light-grey;
 
 /*================== SPACING =================*/
 $size-xs: 2px;
-$size-sm: $size-xs*2 ;//4px;
-$size-md: $size-sm*2 ;//8px;
-$size-lg: $size-md*2 ;//16px;
-$size-xl: $size-lg*2 ;//32px;
-$size-xx: $size-xl*2 ;//64px;
-$size-xxx: $size-xx*2 ;//128px;
+$size-sm: $size-xs * 2; //4px;
+$size-md: $size-sm * 2; //8px;
+$size-lg: $size-md * 2; //16px;
+$size-xl: $size-lg * 2; //32px;
+$size-xx: $size-xl * 2; //64px;
+$size-xxx: $size-xx * 2; //128px;
 
 $page-width: 1024px;
-
 
 $section-padding: $size-lg;
 
@@ -46,8 +44,8 @@ $button-lg-padding-horizontal: $size-xl;
 /*================ TYPOGRAPHY ================*/
 
 // Font stacks
-$font-body: 'proxima-nova', sans-serif;
-$font-headings: 'proxima-nova', sans-serif;
+$font-body: "proxima-nova", sans-serif;
+$font-headings: "proxima-nova", sans-serif;
 
 $font-weight-light: 200;
 $font-weight-medium: 400;

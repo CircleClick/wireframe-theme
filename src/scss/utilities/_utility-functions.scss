@@ -2,17 +2,17 @@
 // ex. 25px -> 25
 @function strip-unit($value) {
 	@return $value / ($value * 0 + 1);
-  }
-  
-  // exponent function
-  @function pow($number, $exponent) {
+}
+
+// exponent function
+@function pow($number, $exponent) {
 	$value: 1;
-  
+
 	@if $exponent > 0 {
-	  @for $i from 1 through $exponent {
-		$value: $value * $number;
-	  }
+		@for $i from 1 through $exponent {
+			$value: $value * $number;
+		}
 	}
-  
+
 	@return $value;
-  }
+}

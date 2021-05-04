@@ -1,7 +1,7 @@
 @media (min-width: $md) {
     .fade__animation--contents {
         transition: transform 0.75s ease-out, opacity 0.75s ease-out;
-        transform: translate(0,0);
+        transform: translate(0, 0);
         opacity: 1;
     }
     .fade__animation.primed {
@@ -26,39 +26,45 @@
     .fade__animation--psuedo {
         overflow: hidden;
 
-        &:before, &:after {
+        &:before,
+        &:after {
             transition: transform 0.75s ease-out, opacity 0.75s ease-out;
-            transform: translate(0,0);
+            transform: translate(0, 0);
             opacity: 1;
         }
     }
     .fade__animation--psuedo.primed {
-        &:before, &:after {
+        &:before,
+        &:after {
             transition: transform 0.75s ease-out, opacity 0.75s ease-out;
-            transform: translate(0,0);
+            transform: translate(0, 0);
             opacity: 1;
         }
 
         &.fade-up {
-            &:before, &:after {
+            &:before,
+            &:after {
                 transform: translateY(100%) !important;
                 opacity: 0 !important;
             }
         }
         &.fade-down {
-            &:before, &:after {
+            &:before,
+            &:after {
                 transform: translateY(-100%) !important;
                 opacity: 0 !important;
             }
         }
         &.fade-left {
-            &:before, &:after {
+            &:before,
+            &:after {
                 transform: translateX(100%) !important;
                 opacity: 0 !important;
             }
         }
         &.fade-right {
-            &:before, &:after {
+            &:before,
+            &:after {
                 transform: translateX(-100%) !important;
                 opacity: 0 !important;
             }

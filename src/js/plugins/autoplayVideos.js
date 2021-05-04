@@ -5,17 +5,17 @@ const defaults = {
 
 
 class AutoplayVideo {
-    constructor ( videos, options = {} ) {
-        this.videos = videos;
-        this.activeTarget = -1;
+	constructor(videos, options = {}) {
+		this.videos = videos;
+		this.activeTarget = -1;
 
 		this.config = setDefaults(options, defaults);
-		
+
 		window.addEventListener('blur', this.pauseVideos);
 		window.addEventListener('focus', this.resumeVideos);
 	}
 
-	pauseVideos () {
+	pauseVideos() {
 		if (this.videos) {
 			for (var i = 0; i < this.videos.length; i++) {
 				const element = this.videos[i];
@@ -23,8 +23,8 @@ class AutoplayVideo {
 			}
 		}
 	}
-	
-	resumeVideos () {
+
+	resumeVideos() {
 		if (this.videos) {
 			for (var i = 0; i < this.videos.length; i++) {
 				const element = this.videos[i];
@@ -32,8 +32,8 @@ class AutoplayVideo {
 			}
 		}
 	}
-	
-	listener () {
+
+	listener() {
 		for (var i = 0; i < this.videos.length; i++) {
 			if (this.videos[i].autoplay === true) {
 				const element = this.videos[i];
@@ -52,8 +52,8 @@ class AutoplayVideo {
 		}
 	}
 
-	initiate (videos) {
-        this.videos = videos;
+	initiate(videos) {
+		this.videos = videos;
 	}
 }
 

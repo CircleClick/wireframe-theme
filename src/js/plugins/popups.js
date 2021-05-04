@@ -5,20 +5,20 @@ const defaults = {
 
 
 class Popups {
-    constructor ( popups, options = {} ) {
-        this.popups = popups;
-        this.activeTarget = -1;
+	constructor(popups, options = {}) {
+		this.popups = popups;
+		this.activeTarget = -1;
 
-        this.config = setDefaults(options, defaults);
+		this.config = setDefaults(options, defaults);
 	}
 
-	dismiss (e) {
+	dismiss(e) {
 		this.parentElement.removeChild(this);
 		resumeAutoplayVideos();
 		document.body.style.overflowY = "";
 	}
-	
-	listener (e) {
+
+	listener(e) {
 		e.preventDefault();
 		pauseAutoplayVideos();
 		var popup = document.createElement("div");
@@ -32,18 +32,18 @@ class Popups {
 		iframe.setAttribute("height", "315");
 		iframe.setAttribute("frameborder", "0");
 		iframe.classList.add("youtube-responsive-embed");
-		
+
 		popup.appendChild(iframe);
 		document.body.appendChild(popup);
-		window.requestAnimationFrame(function () {popup.classList.add("plugin-popup__container--active")});
-		
+		window.requestAnimationFrame(function () { popup.classList.add("plugin-popup__container--active") });
+
 		const dismiss = this.dismiss.bind(this);
 		popup.addEventListener("click", dismiss);
 
 		document.body.style.overflowY = "hidden";
 	}
 
-	initiate () {
+	initiate() {
 		for (var i = 0; i < this.popups.length; i++) {
 			const element = this.popups[i];
 			const bound = this.listener.bind(element);

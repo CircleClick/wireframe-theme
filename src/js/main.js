@@ -1,6 +1,5 @@
 const Navbar = require('./plugins/navbar');
 const Popups = require('./plugins/popups');
-const Carousel = require('./plugins/carousels');
 const AutoplayVideos = require('./plugins/autoplayVideos');
 
 const Platform = require('./utils/platform');
@@ -12,12 +11,12 @@ var fadeAnimationsPrimed = [];
 var autoplay = {};
 
 
-function scrollListener () {
+function scrollListener() {
     autoplay.listener();
 
-    const sizer = window.innerHeight/1.35;
+    const sizer = window.innerHeight / 1.35;
     const sizer2 = window.innerHeight;
-    for (var i = fadeAnimationsPrimed.length-1; i >= 0; i--) {
+    for (var i = fadeAnimationsPrimed.length - 1; i >= 0; i--) {
 
         const element = fadeAnimationsPrimed[i];
         const rect = element.getBoundingClientRect();
@@ -25,15 +24,15 @@ function scrollListener () {
         if (!element.classList.contains("primed")) {
 
             element.classList.remove("primed");
-            fadeAnimationsPrimed.splice(i,1);
+            fadeAnimationsPrimed.splice(i, 1);
 
         } else if (rect.top < sizer) {
 
             element.classList.remove("primed");
-            fadeAnimationsPrimed.splice(i,1);
+            fadeAnimationsPrimed.splice(i, 1);
 
         } else if (rect.top < sizer2) {
-            setTimeout(function () {element.classList.remove("primed")}, 4000);
+            setTimeout(function () { element.classList.remove("primed") }, 4000);
         }
 
     }
@@ -42,14 +41,14 @@ function scrollListener () {
 const scrollInstance = new ScrollDebouncer(scrollListener);
 
 
-function navbarListener (e) {
+function navbarListener(e) {
     e.preventDefault();
     document.body.classList.toggle("navbar__dropdown--active");
     return false;
 }
 
 
-function initiateFadeAnimations () {
+function initiateFadeAnimations() {
     for (var i = 0; i < fadeAnimations.length; i++) {
         const ele = fadeAnimations[i];
         ele.classList.add("primed");
@@ -58,16 +57,12 @@ function initiateFadeAnimations () {
 }
 
 window.addEventListener("DOMContentLoaded", function () {
-	
-	const popupLinks = document.getElementsByClassName("plugin-popup__link");
-	const popups = new Popups(popupLinks);
-	popups.initiate();
 
-	autoplay = new AutoplayVideos(document.getElementsByTagName("video"));
-	
-	const carousel = new Carousel();
-	carousel.initiate(document.getElementsByClassName("carousel__container"));
+    const popupLinks = document.getElementsByClassName("plugin-popup__link");
+    const popups = new Popups(popupLinks);
+    popups.initiate();
 
+    autoplay = new AutoplayVideos(document.getElementsByTagName("video"));
 
     fadeAnimations = document.body.querySelectorAll(".fade__animation, .fade__animation--psuedo");
     initiateFadeAnimations();
@@ -75,13 +70,13 @@ window.addEventListener("DOMContentLoaded", function () {
     const navAnchorLinks = document.getElementsByTagName("a");
     for (let i = 0; i < navAnchorLinks.length; i++) {
         navAnchorLinks[i].addEventListener("click", Navbar.navbarAnchorListener);
-	}
+    }
 
-	scrollListener();
-	
+    scrollListener();
 
-	const navToggle = document.getElementById('navbar-toggle');
-	navToggle.addEventListener('click', ()=>{
-		document.body.classList.toggle('navbar__dropdown--active');
-	});
+
+    const navToggle = document.getElementById('navbar-toggle');
+    navToggle.addEventListener('click', () => {
+        document.body.classList.toggle('navbar__dropdown--active');
+    });
 });

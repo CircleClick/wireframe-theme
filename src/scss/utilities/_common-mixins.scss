@@ -1,81 +1,88 @@
-
 @mixin clearfix() {
 	&::after {
-	  content: '';
-	  display: table;
-	  clear: both;
+		content: "";
+		display: table;
+		clear: both;
 	}
-  
+
 	// sass-lint:disable
 	*zoom: 1;
-  }
-  
-  
-  // ------------------------------
-  // Fluid properties - properties which change fluidly between a min and max depending on resolution
-  @mixin fluid-property($properties, $min-value, $max-value, $min-vw: $min-fluid-size, $max-vw: $max-fluid-size) {
+}
+
+// ------------------------------
+// Fluid properties - properties which change fluidly between a min and max depending on resolution
+@mixin fluid-property($properties, $min-value, $max-value, $min-vw: $min-fluid-size, $max-vw: $max-fluid-size) {
 	@each $property in $properties {
-	  #{$property}: $min-value;
+		#{$property}: $min-value;
 	}
-  
+
 	@media screen and (min-width: $min-vw) {
-	  @each $property in $properties {
-		#{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * (100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)});
-	  }
+		@each $property in $properties {
+			#{$property}: calc(
+				#{$min-value} +
+					#{strip-unit($max-value - $min-value)} *
+					(100vw - #{$min-vw}) /
+					#{strip-unit($max-vw - $min-vw)}
+			);
+		}
 	}
-  
+
 	@media screen and (min-width: $max-vw) {
-	  @each $property in $properties {
-		#{$property}: $max-value;
-	  }
+		@each $property in $properties {
+			#{$property}: $max-value;
+		}
 	}
-  }
-  
-  @mixin fluid-font($min-value, $max-value) {
+}
+
+@mixin fluid-font($min-value, $max-value) {
 	@include fluid-property(font-size, $min-value, $max-value);
-  }
-  
-  @mixin fluid-space($properties, $min-value: $gutter-sm, $max-value: $gutter, $min-vw: $min-fluid-size, $max-vw: $max-fluid-size) {
+}
+
+@mixin fluid-space(
+	$properties,
+	$min-value: $gutter-sm,
+	$max-value: $gutter,
+	$min-vw: $min-fluid-size,
+	$max-vw: $max-fluid-size
+) {
 	@include fluid-property($properties, $min-value, $max-value, $min-vw, $max-vw);
-  }
-  
-  @mixin fluid-space-x($properties, $min-value: $page-gutter-sm, $max-value: $page-gutter-lg) {
+}
+
+@mixin fluid-space-x($properties, $min-value: $page-gutter-sm, $max-value: $page-gutter-lg) {
 	@include fluid-property($properties, $min-value, $max-value);
-  }
-  
-  @mixin fluid-space-y($properties, $min-value: $gutter-xs, $max-value: $gutter-xl) {
+}
+
+@mixin fluid-space-y($properties, $min-value: $gutter-xs, $max-value: $gutter-xl) {
 	@include fluid-property($properties, $min-value, $max-value);
-  }
-  
-  // ------------------------------
-  // Responsive properties - these change on breakpoints, not fluidly
-  @mixin responsive-property($properties, $value-sm, $value-lg, $breakpoint) {
+}
+
+// ------------------------------
+// Responsive properties - these change on breakpoints, not fluidly
+@mixin responsive-property($properties, $value-sm, $value-lg, $breakpoint) {
 	@each $property in $properties {
-	  @include max-width($breakpoint) {
-		#{$property}: $value-sm;
-	  }
-	  @include min-width($breakpoint) {
-		#{$property}: $value-lg;
-	  }
+		@include max-width($breakpoint) {
+			#{$property}: $value-sm;
+		}
+		@include min-width($breakpoint) {
+			#{$property}: $value-lg;
+		}
 	}
-  }
-  
-  
-  // ------------------------------
-  // Pixel density media query
-  @mixin retina() {
+}
+
+// ------------------------------
+// Pixel density media query
+@mixin retina() {
 	@media only screen and (-o-min-device-pixel-ratio: 5/4),
-		   only screen and (-webkit-min-device-pixel-ratio: 1.25),
-		   only screen and (min--moz-device-pixel-ratio: 1.25),
-		   only screen and (min-device-pixel-ratio: 1.25),
-		   only screen and (min-resolution: 1.25dppx) {
-			@content;
+		only screen and (-webkit-min-device-pixel-ratio: 1.25),
+		only screen and (min--moz-device-pixel-ratio: 1.25),
+		only screen and (min-device-pixel-ratio: 1.25),
+		only screen and (min-resolution: 1.25dppx) {
+		@content;
 	}
-  }
-  
-  
-  // ------------------------------
-  @mixin visually-hidden() {
+}
+
+// ------------------------------
+@mixin visually-hidden() {
 	// sass-lint:disable no-important
 	position: absolute !important;
 	overflow: hidden;
@@ -85,9 +92,9 @@
 	margin: -1px;
 	padding: 0;
 	border: 0;
-  }
-  
-  @mixin visually-shown($position: inherit) {
+}
+
+@mixin visually-shown($position: inherit) {
 	// sass-lint:disable no-important
 	position: $position !important;
 	overflow: auto;
@@ -95,70 +102,66 @@
 	width: auto;
 	height: auto;
 	margin: 0;
-  }
-  
-  
-  
-  // ------------------------------
-  // Responsive Show/Hide Helper
-  @mixin responsive-display-helper($breakpoint: '') {
+}
+
+// ------------------------------
+// Responsive Show/Hide Helper
+@mixin responsive-display-helper($breakpoint: "") {
 	// sass-lint:disable no-important
 	.#{$breakpoint}show {
-	  display: block !important;
+		display: block !important;
 	}
-  
+
 	.#{$breakpoint}hide {
-	  display: none !important;
+		display: none !important;
 	}
-  }
-  
-  
-  // ------------------------------
-  // Responsive Text Alignment Helper
-  @mixin responsive-text-align-helper($breakpoint: '') {
+}
+
+// ------------------------------
+// Responsive Text Alignment Helper
+@mixin responsive-text-align-helper($breakpoint: "") {
 	// sass-lint:disable no-important
 	.#{$breakpoint}text-left {
-	  text-align: left !important;
+		text-align: left !important;
 	}
-  
+
 	.#{$breakpoint}text-right {
-	  text-align: right !important;
+		text-align: right !important;
 	}
-  
+
 	.#{$breakpoint}text-center {
-	  text-align: center !important;
+		text-align: center !important;
 	}
-  }
-  
-  
-  // ------------------------------
-  // Style an input's placeholder text
-  @mixin placeholder {
+}
+
+// ------------------------------
+// Style an input's placeholder text
+@mixin placeholder {
 	&::placeholder {
-	  @content;
+		@content;
 	}
 	&::-webkit-input-placeholder {
-	  @content;
+		@content;
 	}
 	&::-moz-placeholder {
-	  @content;
+		@content;
 	}
 	&:-ms-input-placeholder {
-	  @content;
+		@content;
 	}
 	&:-moz-placeholder {
-	  @content;
+		@content;
 	}
-  }
-  
-  
-  // ------------------------------
-  %reset-list {
-	margin: 0; padding: 0;
+}
+
+// ------------------------------
+%reset-list {
+	margin: 0;
+	padding: 0;
 	list-style: none;
-  }
-  
-  %image-replace {
+}
+
+%image-replace {
 	text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;
@@ -169,31 +172,38 @@
 	font-size: 0;
 	letter-spacing: 0;
 	word-spacing: 0;
-  }
-  
-  @mixin inverted-type {
+}
+
+@mixin inverted-type {
 	color: #fff;
-  }
-  
-  // @mixin section-padding {
-  //   @include max-width($nav-breakpoint) {
-  //     padding: $padding-sm;
-  //   }
-  //   @include min-width($nav-breakpoint) {
-  //     padding: $padding-lg;
-  //   }
-  // }
-  
-  // responsive embed (keep videos at 16:9 aspect ratio while filling available width)
-  // note: (9 / 16) * 100 == 56.25
-  .responsive-embed {
+}
+
+// @mixin section-padding {
+//   @include max-width($nav-breakpoint) {
+//     padding: $padding-sm;
+//   }
+//   @include min-width($nav-breakpoint) {
+//     padding: $padding-lg;
+//   }
+// }
+
+// responsive embed (keep videos at 16:9 aspect ratio while filling available width)
+// note: (9 / 16) * 100 == 56.25
+.responsive-embed {
 	position: relative;
 	padding-bottom: 56.25%;
 	height: 0;
 	overflow: hidden;
 	max-width: 100%;
-	
-	& > iframe, & > object, & > embed, & > .responsive-target {
-	  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+
+	& > iframe,
+	& > object,
+	& > embed,
+	& > .responsive-target {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
-  }
+}

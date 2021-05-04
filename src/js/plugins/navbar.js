@@ -15,7 +15,7 @@ const defaults = {
 
 
 class Navbar {
-    constructor ( navbar, targets, options = {} ) {
+    constructor(navbar, targets, options = {}) {
         this.targets = targets;
         this.activeTarget = -1;
         this.navbar = navbar;
@@ -23,33 +23,33 @@ class Navbar {
         this.config = setDefaults(options, defaults);
     }
 
-    applyMultipleClasses (target, classes) {
+    applyMultipleClasses(target, classes) {
         if (typeof classes == "string") classes = classes.split(" ");
         for (let i = 0; i < classes.length; i++) {
             target.classList.add(classes[i]);
         }
     }
 
-    removeNavbarModifiers () {
+    removeNavbarModifiers() {
         for (let i = 0; i < navbarClasses.length; i++) {
             document.body.classList.remove(navbarClasses[i]);
         }
     }
 
-    navbarAnchorListener (e) {
+    navbarAnchorListener(e) {
         const link = this.getAttribute("href");
         const split = link.split("#");
         if (split.length > 1) {
-            const target = document.body.querySelector("a[name="+split[1]+"]");
+            const target = document.body.querySelector("a[name=" + split[1] + "]");
             if (target) {
                 e.preventDefault();
-                target.scrollIntoView({behavior: 'smooth'});
+                target.scrollIntoView({ behavior: 'smooth' });
                 document.body.classList.remove("navbar__dropdown--active");
             }
         }
     }
 
-    scrollListener () {
+    scrollListener() {
         if (window.scrollY === 0 && document.body.classList.contains("special__scroll__target")) {
             this.removeNavbarModifiers();
             this.applyMultipleClasses(document.body, document.body.dataset.navbar);
@@ -57,17 +57,17 @@ class Navbar {
         } else {
             if (this.targets.length == 0) return;
             let target = 0;
-            for (var i = this.targets.length-1; i >= 0; i--) {
+            for (var i = this.targets.length - 1; i >= 0; i--) {
                 let m = 0;
                 const rect = this.targets[i].getBoundingClientRect();
 
                 if (this.targets[i].dataset.navbar.match(/translucent/i) == null &&
                     this.targets[i].dataset.navbar.match(/transparent/i) == null) {
-                        m += this.navbar.offsetHeight;
+                    m += this.navbar.offsetHeight;
                 }
                 m += getTopPadding(this.targets[i]);
 
-                if (rect.top-m <= 0) {
+                if (rect.top - m <= 0) {
                     target = i;
                     i = -1;
                 }
