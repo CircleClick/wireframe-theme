@@ -29,3 +29,5 @@ vscode
 .vscode/
 .vscode/*
 .vscode/sftp.json
+
+dist/
