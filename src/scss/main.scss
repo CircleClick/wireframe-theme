@@ -1,32 +1,30 @@
-
 /*================ SETTINGS ================*/
-@import 'variables';
+@import "variables";
 
 /*================ REUSABLE FUNCTIONS & MIXINS ================*/
-@import 'utilities/utility-functions';
-@import 'utilities/common-mixins';
+@import "utilities/utility-functions";
+@import "utilities/common-mixins";
 
 /*================ RESETS & UNCHANGING CORE ================*/
-@import 'global/normalize';
-@import 'global/bugfixes';
-@import 'global/wp';
-@import 'global/grid';
+@import "global/normalize";
+@import "global/bugfixes";
+@import "global/wp";
+@import "global/grid";
 
 /*================ BASE STYLES ================*/
-@import 'base/fonts';
-@import 'base/core-elements';
-@import 'base/buttons';
-@import 'base/forms';
+@import "base/fonts";
+@import "base/core-elements";
+@import "base/buttons";
+@import "base/forms";
 
 /*================ COMPONENTS ================*/
-@import 'components/default';
-@import 'components/popup';
-@import 'plugins/carousel';
-@import 'plugins/fade-animations';
-@import 'plugins/paralax';
-@import 'utilities/video';
-@import 'components/navbar';
-@import 'components/footer';
-@import 'components/full-height';
-@import 'components/blog';
-@import 'components/posts';
+@import "components/default";
+@import "components/popup";
+@import "plugins/fade-animations";
+@import "plugins/paralax";
+@import "utilities/video";
+@import "components/navbar";
+@import "components/footer";
+@import "components/full-height";
+@import "components/blog";
+@import "components/posts";
