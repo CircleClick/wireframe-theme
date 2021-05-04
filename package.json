@@ -5,9 +5,12 @@
   "license": "MIT",
   "scripts": {
     "css": "sass src/scss/main.scss dist/main.css -s compressed",
-    "watch-css": "sass src/scss/main.scss dist/main.css -s compressed -w"
+    "watch-css": "sass src/scss/main.scss dist/main.css -s compressed -w",
+    "js": "webpack",
+    "watch-js": "webpack --watch"
   },
   "dependencies": {
-    "sass": "^1.32.12"
+    "sass": "^1.32.12",
+    "webpack": "^5.36.2"
   }
 }
