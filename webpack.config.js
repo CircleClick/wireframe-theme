@@ -1,5 +1,5 @@
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         main: `${__dirname}/src/js/main.js`
     },
