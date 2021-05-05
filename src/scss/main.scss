@@ -1,28 +1,11 @@
 /*================ SETTINGS ================*/
 @import "variables";
 
-/*================ REUSABLE FUNCTIONS & MIXINS ================*/
-@import "utilities/utility-functions";
-@import "utilities/common-mixins";
-
-/*================ RESETS & UNCHANGING CORE ================*/
-@import "global/normalize";
-@import "global/bugfixes";
-@import "global/wp";
-@import "global/grid";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /*================ BASE STYLES ================*/
 @import "base/fonts";
 @import "base/core-elements";
 @import "base/buttons";
-@import "base/forms";
-
-/*================ COMPONENTS ================*/
-@import "components/default";
-@import "components/popup";
-@import "plugins/paralax";
-@import "components/navbar";
-@import "components/footer";
-@import "components/full-height";
-@import "components/blog";
-@import "components/posts";
