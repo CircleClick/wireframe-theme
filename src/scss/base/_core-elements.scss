@@ -1,73 +1,11 @@
 
-html {
-	font-family: $font-body;
-	font-weight: $font-weight-medium;
-	font-size: $font-size-base;
-	color: $color-text;
-}
-
-button, input, optgroup, select, textarea {
-	font-family: $font-body;
-}
-
-body {
-	background-color: white;
-}
-
-a {
-	color: $color-primary;
-	text-decoration: none;
-
-	&:hover {
-		color: $color-primary-dark;
-		text-decoration: underline;
-	}
+html, body {
+	margin: 0;
+	width: 100%;
 }
 
 img {
 	max-width: 100%;
 	height: auto;
-}
-
-hr {
-	border: 0;
-	border-top: 1px solid $color-hr;
-	width: 100%;
-}
-
-h1,h2,h3,h4,h5,h6 {
-	font-weight: $font-weight-medium;
-	letter-spacing: $size-xs;
-	margin-top: 0;
-}
-
-p {
-	margin: 0 0 $p-margin 0;
-}
-
-input, textarea, select {
-	font-weight: $font-weight-medium;
-}
-
-small {
-	font-size: $size-md;
-}
-
-b, strong {
-	font-weight: $font-weight-bold;
-}
-
-
-.section__title {
-    font-weight: $font-weight-bold;
-	font-size: $size-xx;
-	margin: 0 0 $size-xl 0;
-}
-
-.container {
-	margin: auto;
-	width: 100%;
-	max-width: $page-width;
-
-	padding: $size-lg;
+	display: block;
 }

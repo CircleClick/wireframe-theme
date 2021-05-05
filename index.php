@@ -17,7 +17,7 @@ get_header(); ?>
 		<?php if (!is_front_page() && is_home()) : ?>
 			<?php get_template_part('partials/blogitem'); ?>
 		<?php else : ?>
-			<div class="container">
+			<div class="md:flex">
 				<h1><?php the_title(); ?></h1>
 
 				<?php if (has_post_thumbnail()) : ?>
