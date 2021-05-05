@@ -2,8 +2,11 @@
 
 function theme_scripts()
 {
-	$cssVersion = @filemtime(get_template_directory() . '/assets/css/main.min.css');
-	wp_enqueue_style('main_css', get_template_directory_uri() . '/assets/css/main.min.css?v=' . $cssVersion);
+	$cssVersion = @filemtime(get_template_directory() . '/dist/style.min.css');
+	wp_enqueue_style('main_css', get_template_directory_uri() . '/dist/style.min.css?v=' . $cssVersion);
+
+	$jsVersion = @filemtime(get_template_directory() . '/dist/main.min.js');
+	wp_enqueue_script('main_js', get_template_directory_uri() . '/dist/main.min.js?v=' . $jsVersion);
 }
 add_action('wp_enqueue_scripts', 'theme_scripts');
 
