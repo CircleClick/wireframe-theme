@@ -1,5 +1,5 @@
-
 const webpack = require('webpack');
+const ExtraWatchWebpackPlugin = require('extra-watch-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const plugins = [
     new MiniCssExtractPlugin({
@@ -8,11 +8,18 @@ const plugins = [
         filename: '[name].min.css',
         chunkFilename: '[id].min.css',
     }),
+    new ExtraWatchWebpackPlugin({
+        files: ['**/*.php', '*.php'],
+    }),
 ];
 
 
 module.exports = {
     mode: 'production',
+    watchOptions: {
+        ignored: /node_modules/,
+        poll: 1000, // Check for changes every second
+    },
     entry: {
         main: `${__dirname}/src/js/main.js`,
         style: `${__dirname}/src/scss/main.scss`,
