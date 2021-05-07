@@ -1,6 +1,7 @@
 {
     "protocol": "sftp",
     "port": 2222,
+    "ignore": [".vscode", ".git", ".DS_Store", "node_modules"],
     "remotePath": "/wp-content/themes/wireframe-theme/",
     "watcher": {
         "files": "{dist/*.css,dist/*.js}",
