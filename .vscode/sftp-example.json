@@ -4,7 +4,7 @@
     "ignore": [".vscode", ".git", ".DS_Store", "node_modules"],
     "remotePath": "/wp-content/themes/wireframe-theme/",
     "watcher": {
-        "files": "{dist/*.css,dist/*.js}",
+        "files": "{dist/*.css,dist/*.js,*.php,**/*.php}",
         "autoUpload": true,
         "autoDelete": false
     },
