@@ -9,6 +9,9 @@ function page_body_classes($classes)
 
 get_header(); ?>
 
+<?php 
+	echo "Hello World";
+?>
 
 <?php if (have_posts()) : ?>
 	<?php while (have_posts()) : ?>

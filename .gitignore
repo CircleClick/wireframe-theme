@@ -31,3 +31,6 @@ vscode
 .vscode/sftp.json
 
 package-lock.json
+
+#Ignore sftp config
+sftp.json
