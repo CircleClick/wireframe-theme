@@ -4,6 +4,7 @@ For use with the [liximomo.sftp](https://marketplace.visualstudio.com/items?item
 In `.vscode/sftp-example.json`, update the `remotePath` value to contain the final name of the theme you are going to build. This ensures your themes directory name will stay consistent no matter how many times you re-clone the project.
 
 Copy `.vscode/sftp-example.json` into `.vscode/sftp.json`, this sets it as the active configuration file.
+> Make sure to leave a copy of `.vscode/sftp-example.json` for future developers, and yourself!
 
 Add your SFTP credentials to `.vscode/sftp.json` for the appropriate `live`, `staging`, or `dev` environments. You don't need to fill in all of them.
 Make sure you also add in the server hosts in the `profiles` -> `{profile}` -> `host` field, your value will look something like `exampledev.sftp.wpengine.com`.
