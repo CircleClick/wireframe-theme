@@ -13,11 +13,27 @@
 	<link rel="manifest" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/favicon/manifest.json">
 	<meta name="theme-color" content="#ffffff">
 	<!--<link rel="mask-icon" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/favicon/favicon.svg" color="#fc00ae">-->
+		<!-- Vanta Import-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
 
 	<?php wp_head(); ?>
 
 </head>
 
 <body <?php body_class(); ?>>
-
+	<!-- <div id="birdsBg">
+		<script>
+			VANTA.BIRDS({
+			el: "#birdsBg",
+			mouseControls: true,
+			touchControls: true,
+			gyroControls: false,
+			minHeight: 200.00,
+			minWidth: 200.00,
+			scale: 1.00,
+			scaleMobile: 1.00
+			})
+		</script>
+	</div> -->
 	<?php get_template_part('partials/nav'); ?>

@@ -1,9 +1,9 @@
 /*================ COLORS ================*/
 
-$color-primary: #04478d;
-$color-primary-dark: #00314f;
-$color-secondary: #68bf4c;
-$color-secondary-dark: rgb(74, 134, 54);
+$color-primary: #d47f31;
+$color-primary-dark: #4f2400;
+$color-secondary: #1dc21a;
+$color-secondary-dark: rgb(81, 134, 54);
 
 // Common colors
 $color-ultralight: #f9f9f9;
@@ -15,7 +15,7 @@ $color-dark-navy: #00314f;
 $color-black: #010102;
 
 // Semantic applications of the color palette
-$color-text: #444;
+$color-text: $color-black;
 $color-hr: $color-light-grey;
 
 /*================== SPACING =================*/

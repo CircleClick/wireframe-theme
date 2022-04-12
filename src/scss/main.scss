@@ -8,3 +8,24 @@
 /*================ BASE STYLES ================*/
 @import "base/fonts";
 @import "base/core-elements";
+
+.hero{
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+.profilePhoto{
+  width: 50%;
+}
+.profilePhoto img{
+  display: inline-block !important;
+  max-width: 40%;
+  border-radius: 20rem;
+}
+
+.description{
+  width: 50%;
+  justify-content: center;
+}

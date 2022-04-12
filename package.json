@@ -25,7 +25,7 @@
     "postcss-nested": "^5.0.5",
     "postcss-scss": "^3.0.5",
     "postcss-sort-media-queries": "^3.9.10",
-    "sass": "^1.32.12",
+    "sass": "^1.50.0",
     "sass-loader": "^11.0.1",
     "tailwindcss": "^2.1.2",
     "webpack-cli": "^4.6.0"
